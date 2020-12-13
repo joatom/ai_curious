@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>A handful of bricks - from SQL to Pandas | AI curious</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="A handful of bricks - from SQL to Pandas" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A step by step guide to learn Pandas from a SQL perspective." />
+<meta property="og:description" content="A step by step guide to learn Pandas from a SQL perspective." />
+<link rel="canonical" href="https://joatom.github.io/ai_curious/markdown/2020/12/12/a-handful-of-bricks-from-sql-to-pandas.html" />
+<meta property="og:url" content="https://joatom.github.io/ai_curious/markdown/2020/12/12/a-handful-of-bricks-from-sql-to-pandas.html" />
+<meta property="og:site_name" content="AI curious" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-12T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"A step by step guide to learn Pandas from a SQL perspective.","url":"https://joatom.github.io/ai_curious/markdown/2020/12/12/a-handful-of-bricks-from-sql-to-pandas.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/markdown/2020/12/12/a-handful-of-bricks-from-sql-to-pandas.html"},"headline":"A handful of bricks - from SQL to Pandas","dateModified":"2020-12-12T00:00:00-06:00","datePublished":"2020-12-12T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ai_curious/">AI curious</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ai_curious/about/">About Me</a><a class="page-link" href="/ai_curious/search/">Search</a><a class="page-link" href="/ai_curious/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">A handful of bricks - from SQL to Pandas</h1><p class="page-description">A step by step guide to learn Pandas from a SQL perspective.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-12-12T00:00:00-06:00" itemprop="datePublished">
+        Dec 12, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      25 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#a-handful-of-bricks---from-sql-to-pandas">A handful of bricks - from SQL to Pandas</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#sql-vs-and-pandas">SQL vs. and Pandas</a></li>
+<li class="toc-entry toc-h2"><a href="#missing-bricks">Missing bricks</a></li>
+<li class="toc-entry toc-h2"><a href="#a-simple-filter-the-behaviour-of-brackets">A simple Filter (The behaviour of brackets.)</a></li>
+<li class="toc-entry toc-h2"><a href="#indexing-what-actually-is-an-index">Indexing (What actually is an index?)</a></li>
+<li class="toc-entry toc-h2"><a href="#joins-why-merge-doesnt-mean-upsert">Joins (Why merge doesn’t mean upsert.)</a></li>
+<li class="toc-entry toc-h2"><a href="#conditional-joins-and-aggregation-almost-done">Conditional Joins and Aggregation (Almost done!)</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#conditional-join">Conditional Join</a></li>
+<li class="toc-entry toc-h3"><a href="#aggregation">Aggregation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#recursion-lost-in-trees">Recursion (Lost in trees?)</a></li>
+<li class="toc-entry toc-h2"><a href="#summary-got-it">Summary (Got it!)</a></li>
+<li class="toc-entry toc-h2"><a href="#resources">Resources</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul>
+</li>
+</ul><h1 id="a-handful-of-bricks---from-sql-to-pandas">
+<a class="anchor" href="#a-handful-of-bricks---from-sql-to-pandas" aria-hidden="true"><span class="octicon octicon-link"></span></a>A handful of bricks - from SQL to Pandas</h1>
+
+<p>Original article published at <a href="https://datamuni.com/@joatom/a-handful-of-bricks-from-sql-to-pandas">datamuni.com</a>.</p>
+
+<h2 id="sql-vs-and-pandas">
+<a class="anchor" href="#sql-vs-and-pandas" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL <del>vs.</del> and Pandas</h2>
+
+<p>I love SQL. It’s been around for decades to arrange and analyse data. Data is kept in tables which are stored in a relational structure. Consistancy and data integraty is kept in mind when designing a relational data model. However, when it comes to machine learning other data structures such as matrices and tensors become important to feat the underlying algorithms and make data processing more efficient. That’s where Pandas steps in. From a SQL developer perspective it is the library to close the gap between your data storage and the ml frameworks.</p>
+
+<p>This blog post shows how to translate some common and some advanced techniques from SQL to Pandas step-by-step. I didn’t just want to write a plain cheat sheet (actually Pandas has a good one to get started: <a href="https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html">Comparison SQL</a> (Ref. 1)). Rather I want to unwind some concepts that might be helpful for a SQL developer who now and then deals with Pandas.</p>
+
+<p>The coding examples are built upon a <a href="https://www.kaggle.com/rtatman/lego-database">Lego Dataset</a> (Ref. 2), that contains a couple of tables with data about various lego sets.</p>
+<blockquote>
+  <p>To follow along I’ve provided a <a href="https://www.kaggle.com/joatom/a-handful-of-bricks-from-sql-to-pandas">notebook</a> (Res. 1) on kaggle, where you can play with the blog examples either using SQLite or Bigquery. You can also checkout a <a href="https://github.com/joatom/blog-resources/tree/main/handful_bricks">docker container</a> (Res. 2) to play on your home machine.</p>
+</blockquote>
+
+<h2 id="missing-bricks">
+<a class="anchor" href="#missing-bricks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Missing bricks</h2>
+
+<p>First listen to this imaginary dialogue that guides us throug the coding:</p>
+
+<p><img src="/ai_curious/images/sql2pandas/chick.png" alt=""> <em>I miss all red bricks of the Lego Pizzeria. I definetly need a new one.</em></p>
+
+<p><img src="/ai_curious/images/sql2pandas/penguin.png" alt=""> <em>Don’t worry. We can try to solve this with data. That will be fun. :-)</em></p>
+
+<p><img src="/ai_curious/images/sql2pandas/chick.png" alt=""> <em>(!@#%&amp;) You’re kidding, right?</em></p>
+
+<p>Now that we have a mission we are ready to code and figuere out how to deal with missing bricks.
+First we inspect the tables. They are organized as shown in the relational diagram (Fig. 1).</p>
+
+<p><img src="/ai_curious/images/sql2pandas/schema.png" alt=""></p>
+
+<p>Fig. 1: Data model (<a href="https://www.kaggle.com/rtatman/lego-database">source: Lego dataset</a> (Ref. 2))</p>
+
+<p>There are colors, parts, sets and inventories. We should start by searching for the <em>Pizzeria</em> in the <code class="language-plaintext highlighter-rouge">sets</code> table using the set number (<em>41311</em>).</p>
+
+<p><img src="/ai_curious/images/sql2pandas/piz.png" alt=""></p>
+
+<p>Fig. 2: Lego Box with set number</p>
+
+<h2 id="a-simple-filter-the-behaviour-of-brackets">
+<a class="anchor" href="#a-simple-filter-the-behaviour-of-brackets" aria-hidden="true"><span class="octicon octicon-link"></span></a>A simple Filter <em>(The behaviour of brackets.)</em>
+</h2>
+<p>A simple <code class="language-plaintext highlighter-rouge">like</code>-filter on the <code class="language-plaintext highlighter-rouge">sets</code> table will return the set info.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+  <span class="k">FROM</span> <span class="k">sets</span> <span class="n">s</span>
+ <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span> <span class="k">like</span> <span class="s1">'41311%'</span>
+</code></pre></div></div>
+
+<p>There are several ways to apply a filter in Pandas. The most SQL-like code utilizes the <code class="language-plaintext highlighter-rouge">query</code>-function which basicaly substitutes the <code class="language-plaintext highlighter-rouge">where</code> clause.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"set_num.str.contains('41311')"</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">'python'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>3582</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>2017</td>
+      <td>494</td>
+      <td>287</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Since the <code class="language-plaintext highlighter-rouge">query</code> function expects a String as input parameter we loose syntax highlighting and syntax checking for our filter expression.</p>
+
+<p>Therefore a more commonly used expression consists of the <strong>bracket notation</strong> (The behaviour of the bracket notation of a class in python is implementated in the class function <code class="language-plaintext highlighter-rouge">__getitem__</code>)</p>
+
+<p>See how we can apply an equals filter using brackets.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"set_num == '41311-1'"</span><span class="p">)</span>
+
+<span class="c1"># or
+</span>
+<span class="n">df_sets</span><span class="p">[</span><span class="n">df_sets</span><span class="p">.</span><span class="n">set_num</span> <span class="o">==</span> <span class="s">'41311-1'</span><span class="p">]</span>
+
+<span class="c1"># or
+</span>
+<span class="n">df_sets</span><span class="p">[</span><span class="n">df_sets</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'41311-1'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>3582</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>2017</td>
+      <td>494</td>
+      <td>287</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There is a lot going on in this expression.</p>
+
+<p>Let’s take it apart.</p>
+
+<p><code class="language-plaintext highlighter-rouge">df_sets['set_num']</code> returns a single column (a <em>Pandas.Series</em> object). A Pandas DataFrame is basically a collection of Series. Additionaly there is a row index (often just called <em>index</em>) and a column index (<em>columnnames</em>). Think of a column store database.</p>
+
+<p><img src="/ai_curious/images/sql2pandas/df.png" alt=""></p>
+
+<p>Fig. 3: Elements of a DataFrame</p>
+
+<p>Applying a boolean condition (<code class="language-plaintext highlighter-rouge">== '41311-1'</code>) to a Series of the DataFrame (<code class="language-plaintext highlighter-rouge">df_sets['set_num']</code>) will result in a boolean collection of the size of the column.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bool_coll</span> <span class="o">=</span> <span class="n">df_sets</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'41311-1'</span>
+
+<span class="c1"># only look at the position 3580 - 3590 of the collection
+</span><span class="n">bool_coll</span><span class="p">[</span><span class="mi">3580</span><span class="p">:</span><span class="mi">3590</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3580    False
+3581    False
+3582     True
+3583    False
+3584    False
+3585    False
+3586    False
+3587    False
+3588    False
+3589    False
+Name: set_num, dtype: bool
+</code></pre></div></div>
+
+<p>The boolean collection now gets past to the DataFrame and filters the rows:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">[</span><span class="n">bool_coll</span><span class="p">]</span>
+<span class="c1"># or 
+</span><span class="n">df_sets</span><span class="p">[</span><span class="n">df_sets</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'41311-1'</span><span class="p">]</span>
+</code></pre></div></div>
+<p>Depending on what type of object we pass to the square brackets the outcome result in very different behaviors.</p>
+
+<p>We have already seen in the example above that if we pass a <strong>boolean collection</strong> with the size of number of rows, the collection is been handled as a <strong>row filter</strong>.</p>
+
+<p>But if we pass a column name or a <strong>list of column</strong> names to the brackets instead, the given columns are selected like in the <code class="language-plaintext highlighter-rouge">SELECT</code> clause of an SQL statement.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span>
+       <span class="nb">year</span>
+  <span class="k">FROM</span> <span class="n">lego</span><span class="p">.</span><span class="k">sets</span><span class="p">;</span>
+</code></pre></div></div>
+<p>=&gt;</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">[[</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'year'</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>Row filter and column selection can be combined like this:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+       <span class="n">s</span><span class="p">.</span><span class="nb">year</span>
+  <span class="k">FROM</span> <span class="n">lego</span><span class="p">.</span><span class="k">sets</span> <span class="n">s</span>
+ <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span> <span class="o">=</span> <span class="s1">'41311-1'</span><span class="p">;</span>
+</code></pre></div></div>
+<p>=&gt;</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df_sets</span><span class="p">[</span><span class="n">df_sets</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'41311-1'</span><span class="p">]</span>
+<span class="n">df_temp</span><span class="p">[[</span><span class="s">'name'</span><span class="p">,</span><span class="s">'year'</span><span class="p">]]</span>
+
+<span class="c1"># or simply:
+</span>
+<span class="n">df_sets</span><span class="p">[</span><span class="n">df_sets</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'41311-1'</span><span class="p">][[</span><span class="s">'name'</span><span class="p">,</span><span class="s">'year'</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>name</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3582</td>
+      <td>Heartlake Pizzeria</td>
+      <td>2017</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="indexing-what-actually-is-an-index">
+<a class="anchor" href="#indexing-what-actually-is-an-index" aria-hidden="true"><span class="octicon octicon-link"></span></a>Indexing <em>(What actually is an index?)</em>
+</h2>
+<p>Another way to access a row in Pandas is by using the row index. With the <code class="language-plaintext highlighter-rouge">loc</code> function (and brackets) we select the <em>Pizzeria</em> and another arbitrary set. We use the row numbers to filter the rows.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">236</span><span class="p">,</span> <span class="mi">3582</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>236</strong></td>
+      <td>10255-1</td>
+      <td>Assembly Square</td>
+      <td>2017</td>
+      <td>155</td>
+      <td>4009</td>
+    </tr>
+    <tr>
+      <td><strong>3582</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>2017</td>
+      <td>494</td>
+      <td>287</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If we inspect the DataFrame closely we realize that it doesn’t realy look like a simple table but rather like a <strong>cross table</strong>.</p>
+
+<p>The first column on the left is a row index and the table header is the column index. In the center the values of the columns are displayed (see Fig. 3).</p>
+
+<p>If we think of the values as a matrix the rows are dimension 0 and columns are dimension 1. The dimension is often used in DataFrame functions as <code class="language-plaintext highlighter-rouge">axis</code> parameter. E.g. dropping columns can be done using dimensional information:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- EXCEPT in SELECT clause only works with BIGQUERY</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="o">*</span> <span class="k">EXCEPT</span> <span class="n">s</span><span class="p">.</span><span class="nb">year</span>
+  <span class="k">FROM</span> <span class="n">lego</span><span class="p">.</span><span class="k">sets</span> <span class="n">s</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>==&gt;</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'year'</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>name</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>00-1</td>
+      <td>Weetabix Castle</td>
+      <td>414</td>
+      <td>471</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>0011-2</td>
+      <td>Town Mini-Figures</td>
+      <td>84</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>0011-3</td>
+      <td>Castle 2 for 1 Bonus Offer</td>
+      <td>199</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>0012-1</td>
+      <td>Space Mini-Figures</td>
+      <td>143</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td>0013-1</td>
+      <td>Space Mini-Figures</td>
+      <td>143</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The indexes can be accessed with the <code class="language-plaintext highlighter-rouge">index</code> and <code class="language-plaintext highlighter-rouge">columns</code> variable. <code class="language-plaintext highlighter-rouge">axes</code> contains both.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">index</span> <span class="c1"># row index
+</span><span class="n">df_sets</span><span class="p">.</span><span class="n">columns</span> <span class="c1"># column index
+</span>
+<span class="n">df_sets</span><span class="p">.</span><span class="n">axes</span> <span class="c1"># both
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[RangeIndex(start=0, stop=11673, step=1),
+ Index(['set_num', 'name', 'year', 'theme_id', 'num_parts'], dtype='object')]
+</code></pre></div></div>
+
+<p>The row index doesn’t necessarely be the row number. We can also convert a column into a row index.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'set_num'</span><span class="p">).</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>set_num</strong></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>00-1</strong></td>
+      <td>Weetabix Castle</td>
+      <td>1970</td>
+      <td>414</td>
+      <td>471</td>
+    </tr>
+    <tr>
+      <td><strong>0011-2</strong></td>
+      <td>Town Mini-Figures</td>
+      <td>1978</td>
+      <td>84</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td><strong>0011-3</strong></td>
+      <td>Castle 2 for 1 Bonus Offer</td>
+      <td>1987</td>
+      <td>199</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>0012-1</strong></td>
+      <td>Space Mini-Figures</td>
+      <td>1979</td>
+      <td>143</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td><strong>0013-1</strong></td>
+      <td>Space Mini-Figures</td>
+      <td>1979</td>
+      <td>143</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is also possible to define hierarchicle indicies for multi dimensional representation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'set_num'</span><span class="p">]).</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">head</span><span class="p">()</span> <span class="c1"># axis = 0 =&gt; row index
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th>name</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>year</strong></td>
+      <td><strong>set_num</strong></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>150</strong></td>
+      <td><strong>700.1.1-1</strong></td>
+      <td>Individual 2 x 4 Bricks</td>
+      <td>371</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>700.1.2-1</strong></td>
+      <td>Individual 2 x 2 Bricks</td>
+      <td>371</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>700.A-1</strong></td>
+      <td>Automatic Binding Bricks Small Brick Set (Lego…</td>
+      <td>366</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>700.B.1-1</strong></td>
+      <td>Individual 1 x 4 x 2 Window (without glass)</td>
+      <td>371</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>700.B.2-1</strong></td>
+      <td>Individual 1 x 2 x 3 Window (without glass)</td>
+      <td>371</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sometimes it is usefull to reset the index, hence reset the row numbers.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">236</span><span class="p">,</span> <span class="mi">3582</span><span class="p">]].</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span> <span class="c1"># set drop = False to keep the old index as new column
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>10255-1</td>
+      <td>Assembly Square</td>
+      <td>2017</td>
+      <td>155</td>
+      <td>4009</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>2017</td>
+      <td>494</td>
+      <td>287</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now we get a sence what is meant by an index in Pandas in contrast to SQL.</p>
+
+<p><strong>Indices in SQL</strong> are hidden data structures (in form of e.g. b-trees or hash-tables). They are built to <strong>access data more quickly</strong>, to avoid full table scans when appropriate or to mantain consistancies when used with constraints.</p>
+
+<p>An <strong>index in Pandas</strong> can rather be seen as a <strong>dimensional access</strong> to the data values. They can be distingueshed between row and column indices.</p>
+
+<h2 id="joins-why-merge-doesnt-mean-upsert">
+<a class="anchor" href="#joins-why-merge-doesnt-mean-upsert" aria-hidden="true"><span class="octicon octicon-link"></span></a>Joins <em>(Why merge doesn’t mean upsert.)</em>
+</h2>
+
+<p><img src="/ai_curious/images/sql2pandas/chick.png" alt=""> <em>What are we gonna do now about my missing parts?</em></p>
+
+<p><img src="/ai_curious/images/sql2pandas/penguin.png" alt=""> <em>We don’t have all the information we need, yet. We need to join the other tables.</em></p>
+
+<p>Though there is a function called <code class="language-plaintext highlighter-rouge">join</code> to join DataFrames I always use the <code class="language-plaintext highlighter-rouge">merge</code> function. This can be a bit confusing, when you are used to Oracle where <em>merge</em> means upsert/updelete rather then combining two tables.</p>
+
+<p>When combining two DataFrames with the <code class="language-plaintext highlighter-rouge">merge</code> function in Pandas we have to define the relationship more explicitly. If you are used to SQL thats what you want.</p>
+
+<p>In contrast the <code class="language-plaintext highlighter-rouge">join</code> function implicitly combines the DataFrames by their index or column names. It also enables multiply DataFrame joins in one statement as long as the join columns are matchable by name.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> 
+  <span class="k">FROM</span> <span class="k">sets</span> <span class="n">s</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">inventories</span> <span class="n">i</span>
+    <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">set_num</span> <span class="c1">-- USING (set_num)</span>
+<span class="k">LIMIT</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>set_num</th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+      <th>id</th>
+      <th>version</th>
+      <th>set_num_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>00-1</td>
+      <td>Weetabix Castle</td>
+      <td>1970</td>
+      <td>414</td>
+      <td>471</td>
+      <td>5574</td>
+      <td>1</td>
+      <td>00-1</td>
+    </tr>
+    <tr>
+      <td>0011-2</td>
+      <td>Town Mini-Figures</td>
+      <td>1978</td>
+      <td>84</td>
+      <td>12</td>
+      <td>5087</td>
+      <td>1</td>
+      <td>0011-2</td>
+    </tr>
+    <tr>
+      <td>0011-3</td>
+      <td>Castle 2 for 1 Bonus Offer</td>
+      <td>1987</td>
+      <td>199</td>
+      <td>2</td>
+      <td>2216</td>
+      <td>1</td>
+      <td>0011-3</td>
+    </tr>
+    <tr>
+      <td>0012-1</td>
+      <td>Space Mini-Figures</td>
+      <td>1979</td>
+      <td>143</td>
+      <td>12</td>
+      <td>1414</td>
+      <td>1</td>
+      <td>0012-1</td>
+    </tr>
+    <tr>
+      <td>0013-1</td>
+      <td>Space Mini-Figures</td>
+      <td>1979</td>
+      <td>143</td>
+      <td>12</td>
+      <td>4609</td>
+      <td>1</td>
+      <td>0013-1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These Pandas statements all do the same:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_inventories</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'set_num'</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#or if columns are matching
+</span>
+<span class="n">df_sets</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_inventories</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'set_num'</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#or explicitly defined columns
+</span>
+<span class="n">df_sets</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_inventories</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s">'set_num'</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s">'set_num'</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>name</th>
+      <th>year</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+      <th>id</th>
+      <th>version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>00-1</td>
+      <td>Weetabix Castle</td>
+      <td>1970</td>
+      <td>414</td>
+      <td>471</td>
+      <td>5574</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>0011-2</td>
+      <td>Town Mini-Figures</td>
+      <td>1978</td>
+      <td>84</td>
+      <td>12</td>
+      <td>5087</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>0011-3</td>
+      <td>Castle 2 for 1 Bonus Offer</td>
+      <td>1987</td>
+      <td>199</td>
+      <td>2</td>
+      <td>2216</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>0012-1</td>
+      <td>Space Mini-Figures</td>
+      <td>1979</td>
+      <td>143</td>
+      <td>12</td>
+      <td>1414</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td>0013-1</td>
+      <td>Space Mini-Figures</td>
+      <td>1979</td>
+      <td>143</td>
+      <td>12</td>
+      <td>4609</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To see witch parts are needed for the <em>Pizzeria</em> we combine some tables. We look for the inventory of the set and gather all parts. Then we get color and part category information.</p>
+
+<p>We end up with an inventory list:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span> 
+       <span class="n">s</span><span class="p">.</span><span class="n">name</span> <span class="n">set_name</span><span class="p">,</span> 
+       <span class="n">p</span><span class="p">.</span><span class="n">part_num</span><span class="p">,</span> 
+       <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="n">part_name</span><span class="p">,</span> 
+       <span class="n">ip</span><span class="p">.</span><span class="n">quantity</span><span class="p">,</span>
+       <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="n">color</span><span class="p">,</span>
+       <span class="n">pc</span><span class="p">.</span><span class="n">name</span> <span class="n">part_cat</span>
+  <span class="k">FROM</span> <span class="k">sets</span> <span class="n">s</span><span class="p">,</span>
+       <span class="n">inventories</span> <span class="n">i</span><span class="p">,</span>
+       <span class="n">inventory_parts</span> <span class="n">ip</span><span class="p">,</span>
+       <span class="n">parts</span> <span class="n">p</span><span class="p">,</span>
+       <span class="n">colors</span> <span class="k">c</span><span class="p">,</span>
+       <span class="n">part_categories</span> <span class="n">pc</span>
+ <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">set_num</span>
+   <span class="k">AND</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">ip</span><span class="p">.</span><span class="n">inventory_id</span>
+   <span class="k">AND</span> <span class="n">ip</span><span class="p">.</span><span class="n">part_num</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">part_num</span>
+   <span class="k">AND</span> <span class="n">ip</span><span class="p">.</span><span class="n">color_id</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span>
+   <span class="k">AND</span> <span class="n">p</span><span class="p">.</span><span class="n">part_cat_id</span> <span class="o">=</span> <span class="n">pc</span><span class="p">.</span><span class="n">id</span> 
+   <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span> <span class="k">in</span> <span class="p">(</span><span class="s1">'41311-1'</span><span class="p">)</span>
+   <span class="k">AND</span> <span class="n">i</span><span class="p">.</span><span class="k">version</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">AND</span> <span class="n">ip</span><span class="p">.</span><span class="n">is_spare</span> <span class="o">=</span> <span class="s1">'f'</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="k">LIMIT</span> <span class="mi">10</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>part_num</th>
+      <th>part_name</th>
+      <th>quantity</th>
+      <th>color</th>
+      <th>part_cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>25269pr03</td>
+      <td>1/4 CIRCLE TILE 1X1 with Pizza Print</td>
+      <td>4</td>
+      <td>Tan</td>
+      <td>Tiles Printed</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>32807</td>
+      <td>BRICK 1X1X1 1/3, W/ ARCH</td>
+      <td>4</td>
+      <td>Red</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>6190</td>
+      <td>Bar 1 x 3 (Radio Handle, Phone Handset)</td>
+      <td>1</td>
+      <td>Red</td>
+      <td>Bars, Ladders and Fences</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>30374</td>
+      <td>Bar 4L (Lightsaber Blade / Wand)</td>
+      <td>1</td>
+      <td>Light Bluish Gray</td>
+      <td>Bars, Ladders and Fences</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>99207</td>
+      <td>Bracket 1 x 2 - 2 x 2 Inverted</td>
+      <td>1</td>
+      <td>Black</td>
+      <td>Plates Special</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>2453b</td>
+      <td>Brick 1 x 1 x 5 with Solid Stud</td>
+      <td>4</td>
+      <td>Tan</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>3004</td>
+      <td>Brick 1 x 2</td>
+      <td>4</td>
+      <td>Light Bluish Gray</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>3004</td>
+      <td>Brick 1 x 2</td>
+      <td>3</td>
+      <td>Tan</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>3004</td>
+      <td>Brick 1 x 2</td>
+      <td>1</td>
+      <td>White</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>3245b</td>
+      <td>Brick 1 x 2 x 2 with Inside Axle Holder</td>
+      <td>2</td>
+      <td>White</td>
+      <td>Bricks</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Lets create a general <code class="language-plaintext highlighter-rouge">inventory_list</code> as view and make the statement more readable and comparable with ANSI-syntax (separating filters/predicates from join conditions).</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">VIEW</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">inventory_list</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">inventory_list</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span> 
+       <span class="n">s</span><span class="p">.</span><span class="n">name</span> <span class="n">set_name</span><span class="p">,</span> 
+       <span class="n">s</span><span class="p">.</span><span class="n">theme_id</span><span class="p">,</span>
+       <span class="n">s</span><span class="p">.</span><span class="n">num_parts</span><span class="p">,</span>
+       <span class="n">p</span><span class="p">.</span><span class="n">part_num</span><span class="p">,</span> 
+       <span class="n">ip</span><span class="p">.</span><span class="n">quantity</span><span class="p">,</span>
+       <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="n">part_name</span><span class="p">,</span> 
+       <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="n">color</span><span class="p">,</span>
+       <span class="n">pc</span><span class="p">.</span><span class="n">name</span> <span class="n">part_cat</span>
+  <span class="k">FROM</span> <span class="k">sets</span> <span class="n">s</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">inventories</span> <span class="n">i</span>
+ <span class="k">USING</span> <span class="p">(</span><span class="n">set_num</span><span class="p">)</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">inventory_parts</span> <span class="n">ip</span>
+    <span class="k">ON</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">ip</span><span class="p">.</span><span class="n">inventory_id</span><span class="p">)</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">parts</span> <span class="n">p</span>
+ <span class="k">USING</span> <span class="p">(</span><span class="n">part_num</span><span class="p">)</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">colors</span> <span class="k">c</span>
+    <span class="k">ON</span> <span class="p">(</span><span class="n">ip</span><span class="p">.</span><span class="n">color_id</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">part_categories</span> <span class="n">pc</span>
+    <span class="k">ON</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">part_cat_id</span> <span class="o">=</span> <span class="n">pc</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+ <span class="k">WHERE</span> <span class="n">i</span><span class="p">.</span><span class="k">version</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">AND</span> <span class="n">ip</span><span class="p">.</span><span class="n">is_spare</span> <span class="o">=</span> <span class="s1">'f'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Now we translate the view to Pandas. We see how the structure relates to sql. The parameter <code class="language-plaintext highlighter-rouge">how</code> defines the type of join (here: <code class="language-plaintext highlighter-rouge">inner</code>), <code class="language-plaintext highlighter-rouge">on</code> represents the <code class="language-plaintext highlighter-rouge">USING</code> clause whereas <code class="language-plaintext highlighter-rouge">left_on</code> and <code class="language-plaintext highlighter-rouge">right_on</code> stand for the SQL <code class="language-plaintext highlighter-rouge">ON</code> condition.</p>
+
+<p>In SQL usually an optimizer defines based in rules or statistics the execution plan (the order in which the tables are accessed, combined and filtered). I’m not sure if Pandas follows a similar approache. To be safe, I assume the order and early column dropping might matter for performance and memory management.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_inventory_list</span> <span class="o">=</span> <span class="n">df_sets</span><span class="p">[[</span><span class="s">'set_num'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'theme_id'</span><span class="p">,</span> <span class="s">'num_parts'</span><span class="p">]]</span> \
+                    <span class="p">.</span><span class="n">merge</span><span class="p">(</span>
+                    <span class="n">df_inventories</span><span class="p">[</span><span class="n">df_inventories</span><span class="p">[</span><span class="s">'version'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'set_num'</span><span class="p">]],</span>
+                        <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span>
+                        <span class="n">on</span> <span class="o">=</span> <span class="s">'set_num'</span>
+                    <span class="p">)</span> \
+                    <span class="p">.</span><span class="n">merge</span><span class="p">(</span>
+                    <span class="n">df_inventory_parts</span><span class="p">[</span><span class="n">df_inventory_parts</span><span class="p">[</span><span class="s">'is_spare'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'f'</span><span class="p">][[</span><span class="s">'inventory_id'</span><span class="p">,</span> <span class="s">'part_num'</span><span class="p">,</span> <span class="s">'color_id'</span><span class="p">,</span> <span class="s">'quantity'</span><span class="p">]],</span>
+                        <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span>
+                        <span class="n">left_on</span> <span class="o">=</span> <span class="s">'id'</span><span class="p">,</span>
+                        <span class="n">right_on</span> <span class="o">=</span> <span class="s">'inventory_id'</span>
+                    <span class="p">)</span> \
+                    <span class="p">.</span><span class="n">merge</span><span class="p">(</span>
+                    <span class="n">df_parts</span><span class="p">[[</span><span class="s">'part_num'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'part_cat_id'</span><span class="p">]],</span>
+                        <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span>
+                        <span class="n">on</span> <span class="o">=</span> <span class="s">'part_num'</span>
+                    <span class="p">)</span> \
+                    <span class="p">.</span><span class="n">merge</span><span class="p">(</span>
+                    <span class="n">df_colors</span><span class="p">[[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">]],</span>
+                        <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span>
+                        <span class="n">left_on</span> <span class="o">=</span> <span class="s">'color_id'</span><span class="p">,</span>
+                        <span class="n">right_on</span> <span class="o">=</span> <span class="s">'id'</span>
+                    <span class="p">)</span> \
+                    <span class="p">.</span><span class="n">merge</span><span class="p">(</span>
+                    <span class="n">df_part_categories</span><span class="p">[[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">]],</span>
+                        <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span>
+                        <span class="n">left_on</span> <span class="o">=</span> <span class="s">'part_cat_id'</span><span class="p">,</span>
+                        <span class="n">right_on</span> <span class="o">=</span> <span class="s">'id'</span>
+                    <span class="p">)</span>
+
+<span class="c1"># remove some columns and use index as row number (reset_index)
+</span><span class="n">df_inventory_list</span> <span class="o">=</span> <span class="n">df_inventory_list</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'id_x'</span><span class="p">,</span> <span class="s">'inventory_id'</span><span class="p">,</span> <span class="s">'color_id'</span><span class="p">,</span> <span class="s">'part_cat_id'</span><span class="p">,</span> <span class="s">'id_y'</span><span class="p">,</span> <span class="s">'id'</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># rename columns
+</span><span class="n">df_inventory_list</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'set_num'</span><span class="p">,</span> <span class="s">'set_name'</span><span class="p">,</span> <span class="s">'theme_id'</span><span class="p">,</span> <span class="s">'num_parts'</span><span class="p">,</span> <span class="s">'part_num'</span><span class="p">,</span> <span class="s">'quantity'</span><span class="p">,</span> <span class="s">'part_name'</span><span class="p">,</span> <span class="s">'color'</span><span class="p">,</span> <span class="s">'part_cat'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Lots of code here. So we better check if our Pandas code matches the results of our SQL code.</p>
+
+<p>Select the inventory list for our example, write it to a DataFrame (<code class="language-plaintext highlighter-rouge">df_test_from_sql</code>) and compare the results.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_test_from_sql</span> <span class="o">&lt;&lt;</span>
+<span class="k">SELECT</span> <span class="n">il</span><span class="p">.</span><span class="o">*</span> 
+  <span class="k">FROM</span> <span class="n">inventory_list</span> <span class="n">il</span>
+ <span class="k">WHERE</span> <span class="n">il</span><span class="p">.</span><span class="n">set_num</span> <span class="k">in</span> <span class="p">(</span><span class="s1">'41311-1'</span><span class="p">)</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">part_name</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">color</span>
+<span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+      <th>part_num</th>
+      <th>quantity</th>
+      <th>part_name</th>
+      <th>color</th>
+      <th>part_cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>25269pr03</td>
+      <td>4</td>
+      <td>1/4 CIRCLE TILE 1X1 with Pizza Print</td>
+      <td>Tan</td>
+      <td>Tiles Printed</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>32807</td>
+      <td>4</td>
+      <td>BRICK 1X1X1 1/3, W/ ARCH</td>
+      <td>Red</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>6190</td>
+      <td>1</td>
+      <td>Bar 1 x 3 (Radio Handle, Phone Handset)</td>
+      <td>Red</td>
+      <td>Bars, Ladders and Fences</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>30374</td>
+      <td>1</td>
+      <td>Bar 4L (Lightsaber Blade / Wand)</td>
+      <td>Light Bluish Gray</td>
+      <td>Bars, Ladders and Fences</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>99207</td>
+      <td>1</td>
+      <td>Bracket 1 x 2 - 2 x 2 Inverted</td>
+      <td>Black</td>
+      <td>Plates Special</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>2453b</td>
+      <td>4</td>
+      <td>Brick 1 x 1 x 5 with Solid Stud</td>
+      <td>Tan</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3004</td>
+      <td>4</td>
+      <td>Brick 1 x 2</td>
+      <td>Light Bluish Gray</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3004</td>
+      <td>3</td>
+      <td>Brick 1 x 2</td>
+      <td>Tan</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3004</td>
+      <td>1</td>
+      <td>Brick 1 x 2</td>
+      <td>White</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3245b</td>
+      <td>2</td>
+      <td>Brick 1 x 2 x 2 with Inside Axle Holder</td>
+      <td>White</td>
+      <td>Bricks</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># test
+</span><span class="n">df_test_from_df</span> <span class="o">=</span> <span class="n">df_inventory_list</span><span class="p">[</span><span class="n">df_inventory_list</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">].</span><span class="n">isin</span><span class="p">([</span><span class="s">'41311-1'</span><span class="p">])].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s">'part_name'</span><span class="p">,</span> <span class="s">'set_num'</span><span class="p">,</span> <span class="s">'color'</span><span class="p">]).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">df_test_from_df</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+      <th>part_num</th>
+      <th>quantity</th>
+      <th>part_name</th>
+      <th>color</th>
+      <th>part_cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>507161</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>25269pr03</td>
+      <td>4</td>
+      <td>1/4 CIRCLE TILE 1X1 with Pizza Print</td>
+      <td>Tan</td>
+      <td>Tiles Printed</td>
+    </tr>
+    <tr>
+      <td><strong>543292</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>32807</td>
+      <td>4</td>
+      <td>BRICK 1X1X1 1/3, W/ ARCH</td>
+      <td>Red</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td><strong>266022</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>6190</td>
+      <td>1</td>
+      <td>Bar 1 x 3 (Radio Handle, Phone Handset)</td>
+      <td>Red</td>
+      <td>Bars, Ladders and Fences</td>
+    </tr>
+    <tr>
+      <td><strong>273113</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>30374</td>
+      <td>1</td>
+      <td>Bar 4L (Lightsaber Blade / Wand)</td>
+      <td>Light Bluish Gray</td>
+      <td>Bars, Ladders and Fences</td>
+    </tr>
+    <tr>
+      <td><strong>306863</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>99207</td>
+      <td>1</td>
+      <td>Bracket 1 x 2 - 2 x 2 Inverted</td>
+      <td>Black</td>
+      <td>Plates Special</td>
+    </tr>
+    <tr>
+      <td><strong>47206</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>2453b</td>
+      <td>4</td>
+      <td>Brick 1 x 1 x 5 with Solid Stud</td>
+      <td>Tan</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td><strong>50211</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3004</td>
+      <td>4</td>
+      <td>Brick 1 x 2</td>
+      <td>Light Bluish Gray</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td><strong>45716</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3004</td>
+      <td>3</td>
+      <td>Brick 1 x 2</td>
+      <td>Tan</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td><strong>16485</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3004</td>
+      <td>1</td>
+      <td>Brick 1 x 2</td>
+      <td>White</td>
+      <td>Bricks</td>
+    </tr>
+    <tr>
+      <td><strong>22890</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3245b</td>
+      <td>2</td>
+      <td>Brick 1 x 2 x 2 with Inside Axle Holder</td>
+      <td>White</td>
+      <td>Bricks</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># assert equals
+</span><span class="k">if</span> <span class="ow">not</span> <span class="n">USE_BIGQUERY</span><span class="p">:</span>
+    <span class="n">df_test_from_sql</span> <span class="o">=</span> <span class="n">df_test_from_sql</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    
+<span class="n">pd</span><span class="p">.</span><span class="n">_testing</span><span class="p">.</span><span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">df_test_from_sql</span><span class="p">,</span> <span class="n">df_test_from_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>The results are equal as expected.</p>
+
+<p>Since we are only interested in the red bricks we create a list of those missing parts.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+  <span class="k">FROM</span> <span class="n">inventory_list</span> <span class="n">il</span>
+ <span class="k">WHERE</span> <span class="n">il</span><span class="p">.</span><span class="n">set_num</span> <span class="o">=</span> <span class="s1">'41311-1'</span>
+   <span class="k">AND</span> <span class="n">part_cat</span> <span class="k">like</span> <span class="s1">'%Brick%'</span>
+   <span class="k">AND</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'Red'</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">color</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">part_name</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">set_num</span><span class="p">;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+      <th>part_num</th>
+      <th>quantity</th>
+      <th>part_name</th>
+      <th>color</th>
+      <th>part_cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3039</td>
+      <td>1</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>Red</td>
+      <td>Bricks Sloped</td>
+    </tr>
+    <tr>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3045</td>
+      <td>2</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>Red</td>
+      <td>Bricks Sloped</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We need to watchout for the brackets when combining filters in DataFrames.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_missing_parts</span> <span class="o">=</span> <span class="n">df_inventory_list</span><span class="p">[(</span><span class="n">df_inventory_list</span><span class="p">[</span><span class="s">'set_num'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'41311-1'</span><span class="p">)</span> <span class="o">&amp;</span> 
+                                     <span class="p">(</span><span class="n">df_inventory_list</span><span class="p">[</span><span class="s">'part_cat'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"Brick"</span><span class="p">))</span> <span class="o">&amp;</span>
+                                     <span class="p">(</span><span class="n">df_inventory_list</span><span class="p">[</span><span class="s">'color'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Red'</span><span class="p">)</span>
+                                    <span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s">'color'</span><span class="p">,</span> <span class="s">'part_name'</span><span class="p">,</span> <span class="s">'set_num'</span><span class="p">]).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+<span class="n">df_missing_parts</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>theme_id</th>
+      <th>num_parts</th>
+      <th>part_num</th>
+      <th>quantity</th>
+      <th>part_name</th>
+      <th>color</th>
+      <th>part_cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3039</td>
+      <td>1</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>Red</td>
+      <td>Bricks Sloped</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>41311-1</td>
+      <td>Heartlake Pizzeria</td>
+      <td>494</td>
+      <td>287</td>
+      <td>3045</td>
+      <td>2</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>Red</td>
+      <td>Bricks Sloped</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/ai_curious/images/sql2pandas/penguin.png" alt=""> <em>There we go, we are missing one 2x2 brick and tw0 2x2 double convex.</em></p>
+
+<p><img src="/ai_curious/images/sql2pandas/chick.png" alt=""> <em>Yup, that’s the roof of the fireplace. I knew that before.</em></p>
+
+<h2 id="conditional-joins-and-aggregation-almost-done">
+<a class="anchor" href="#conditional-joins-and-aggregation-almost-done" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conditional Joins and Aggregation <em>(Almost done!)</em>
+</h2>
+
+<p>Next we search for sets that contain the missing parts. The quantity of the parts in the found sets must be greater or equal the quantity of the missing parts.</p>
+
+<p>In SQL it is done with an <strong>conditional join</strong> <code class="language-plaintext highlighter-rouge">il.quantity &gt;= mp.quantity</code>.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sets_with_missing_parts</span> <span class="o">&lt;&lt;</span> 
+
+<span class="c1">-- A list of missing parts</span>
+
+<span class="k">WITH</span> <span class="n">missing_parts</span> <span class="k">AS</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">il</span><span class="p">.</span><span class="n">set_name</span><span class="p">,</span>
+         <span class="n">il</span><span class="p">.</span><span class="n">part_num</span><span class="p">,</span> 
+         <span class="n">il</span><span class="p">.</span><span class="n">part_name</span><span class="p">,</span>
+         <span class="n">il</span><span class="p">.</span><span class="n">color</span><span class="p">,</span>
+         <span class="n">il</span><span class="p">.</span><span class="n">quantity</span>
+    <span class="k">FROM</span> <span class="n">inventory_list</span> <span class="n">il</span>
+   <span class="k">WHERE</span> <span class="n">il</span><span class="p">.</span><span class="n">set_num</span> <span class="o">=</span> <span class="s1">'41311-1'</span>
+     <span class="k">AND</span> <span class="n">il</span><span class="p">.</span><span class="n">part_cat</span> <span class="k">like</span> <span class="s1">'%Brick%'</span>
+     <span class="k">AND</span> <span class="n">il</span><span class="p">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">'Red'</span>
+<span class="p">)</span>
+
+<span class="c1">-- Looking for set that contains as much of the missing parts as needed</span>
+
+<span class="k">SELECT</span> <span class="n">mp</span><span class="p">.</span><span class="n">set_name</span> <span class="k">as</span> <span class="n">searching_for_set</span><span class="p">,</span>
+       <span class="n">il</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">set_name</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">part_name</span><span class="p">,</span>
+       <span class="c1">-- total number of parts per set</span>
+       <span class="n">il</span><span class="p">.</span><span class="n">num_parts</span><span class="p">,</span>
+       <span class="c1">-- how many of the missing parts were found in the set </span>
+       <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">il</span><span class="p">.</span><span class="n">set_num</span><span class="p">)</span> <span class="k">AS</span> <span class="n">matches_per_set</span>
+  <span class="k">FROM</span> <span class="n">inventory_list</span> <span class="n">il</span>
+ <span class="k">INNER</span> <span class="k">JOIN</span>
+       <span class="n">missing_parts</span> <span class="n">mp</span>
+    <span class="k">ON</span> <span class="p">(</span><span class="n">il</span><span class="p">.</span><span class="n">part_num</span> <span class="o">=</span> <span class="n">mp</span><span class="p">.</span><span class="n">part_num</span>
+        <span class="k">AND</span> <span class="n">il</span><span class="p">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">mp</span><span class="p">.</span><span class="n">color</span>
+        <span class="c1">-- searching for a set that contains at least as much parts as there are missing</span>
+        <span class="k">AND</span> <span class="n">il</span><span class="p">.</span><span class="n">quantity</span> <span class="o">&gt;=</span> <span class="n">mp</span><span class="p">.</span><span class="n">quantity</span>
+       <span class="p">)</span>
+ <span class="c1">-- don't search in the Pizzeria set</span>
+ <span class="k">WHERE</span> <span class="n">il</span><span class="p">.</span><span class="n">set_num</span> <span class="o">&lt;&gt;</span> <span class="s1">'41311-1'</span>
+ <span class="c1">-- prioritize sets with all the missing parts and as few parts as possible</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> 
+       <span class="n">matches_per_set</span> <span class="k">DESC</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">num_parts</span><span class="p">,</span> 
+       <span class="n">il</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span>
+       <span class="n">il</span><span class="p">.</span><span class="n">part_name</span>
+<span class="k">LIMIT</span> <span class="mi">16</span>
+</code></pre></div></div>
+
+<h3 id="conditional-join">
+<a class="anchor" href="#conditional-join" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conditional Join</h3>
+
+<p>There is no intuitive way to do a conditional join on DataFrames. The easiest I’ve <a href="https://stackoverflow.com/questions/23508351/how-to-do-workaround-a-conditional-join-in-python-pandas">seen</a> so far is a two step solution.
+As substitution for the SQL <code class="language-plaintext highlighter-rouge">WITH</code>-clause we can reuse <code class="language-plaintext highlighter-rouge">df_missing_parts</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. merge on the equal conditions
+</span><span class="n">df_sets_with_missing_parts</span> <span class="o">=</span> <span class="n">df_inventory_list</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_missing_parts</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s">'inner'</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s">'part_num'</span><span class="p">,</span> <span class="s">'color'</span><span class="p">],</span> <span class="n">suffixes</span> <span class="o">=</span> <span class="p">(</span><span class="s">'_found'</span><span class="p">,</span> <span class="s">'_missing'</span><span class="p">))</span>
+<span class="c1"># 2. apply filter for the qreater equals condition
+</span><span class="n">df_sets_with_missing_parts</span> <span class="o">=</span> <span class="n">df_sets_with_missing_parts</span><span class="p">[</span><span class="n">df_sets_with_missing_parts</span><span class="p">[</span><span class="s">'quantity_found'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">df_sets_with_missing_parts</span><span class="p">[</span><span class="s">'quantity_missing'</span><span class="p">]]</span>
+
+<span class="c1"># select columns
+</span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">'set_num'</span><span class="p">,</span> <span class="s">'set_name'</span><span class="p">,</span> <span class="s">'part_name'</span><span class="p">,</span> <span class="s">'num_parts'</span><span class="p">]</span>
+<span class="n">df_sets_with_missing_parts</span> <span class="o">=</span> <span class="n">df_sets_with_missing_parts</span><span class="p">[[</span><span class="s">'set_name_missing'</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="s">'_found'</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]]</span>
+<span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'searching_for_set'</span><span class="p">]</span> <span class="o">+</span> <span class="n">cols</span>
+</code></pre></div></div>
+
+<h3 id="aggregation">
+<a class="anchor" href="#aggregation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregation</h3>
+
+<p>In the next step the aggregation of the analytic function</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">il</span><span class="p">.</span><span class="n">set_num</span><span class="p">)</span> <span class="n">matches_per_set</span>
+</code></pre></div></div>
+<p>needs to be calculated. Hence the number of not-NaN values will be counted per <code class="language-plaintext highlighter-rouge">SET_NUM</code> group and assigned to each row in a new column (<code class="language-plaintext highlighter-rouge">matches_per_set</code>).</p>
+
+<p>But before translating the analytic function, let’s have a look at a regular aggregation, first. Say, we simply want to count the entries per <code class="language-plaintext highlighter-rouge">set_num</code> on group level (without assigning the results back to the original group entries) and also sum up all parts of a group. Then the SQL would look something like this:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span><span class="p">,</span>
+       <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">matches_per_set</span>
+       <span class="k">SUM</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">num_parts</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_num_parts</span>
+  <span class="k">FROM</span> <span class="p">...</span>
+ <span class="k">WHERE</span> <span class="p">...</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> 
+       <span class="n">s</span><span class="p">.</span><span class="n">set_num</span><span class="p">;</span>
+</code></pre></div></div>
+<p>All selected columns must either be aggregated by a function (<code class="language-plaintext highlighter-rouge">COUNT</code>, <code class="language-plaintext highlighter-rouge">SUM</code>) or defined as a group (<code class="language-plaintext highlighter-rouge">GROUP BY</code>).
+The result is a two column list with the group <code class="language-plaintext highlighter-rouge">set_num</code> and the aggregations <code class="language-plaintext highlighter-rouge">matches_per_set</code> and <code class="language-plaintext highlighter-rouge">total_num_part</code>.</p>
+
+<p>Now see how the counting is done with Pandas.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'set_num'</span><span class="p">]).</span><span class="n">count</span><span class="p">()</span>  <span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'set_num'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># for sum and count:
+# df_sets_with_missing_parts.groupby(['set_num']).agg(['count', 'sum']) 
+</span></code></pre></div></div>
+
+<p>||searching_for_set|set_name|part_name|num_parts|
+|-|-|-|-|-|
+|<strong>set_num</strong>|||||
+|<strong>llca8-1</strong>|1|1|1|1|
+|<strong>llca21-1</strong>|1|1|1|1|
+|<strong>fruit1-1</strong>|1|1|1|1|
+|<strong>MMMB026-1</strong>|1|1|1|1|
+|<strong>MMMB003-1</strong>|1|1|1|1|
+|<strong>…</strong>|…|…|…|…|
+|<strong>10021-1</strong>|1|1|1|1|
+|<strong>088-1</strong>|1|1|1|1|
+|<strong>080-1</strong>|2|2|2|2|
+|<strong>066-1</strong>|1|1|1|1|
+|<strong>00-4</strong>|1|1|1|1|
+468 rows × 4 columns</p>
+
+<p>Wow, that’s different! The aggregation function is applied to every column independently and the group is set as row index. 
+But it is also possible to define the aggregation function for each column explicitly like in SQL:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'set_num'</span><span class="p">],</span> <span class="n">as_index</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">agg</span><span class="p">(</span><span class="n">matches_per_set</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">"set_num"</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="s">"count"</span><span class="p">),</span> 
+         <span class="n">total_num_parts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">"num_parts"</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="s">"sum"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>||set_num|matches_per_set|total_num_parts|
+|-|-|-|-|
+|<strong>0</strong>|00-4|1|126|
+|<strong>1</strong>|066-1|1|407|
+|<strong>2</strong>|080-1|2|1420|
+|<strong>3</strong>|088-1|1|615|
+|<strong>4</strong>|10021-1|1|974|
+|<strong>…</strong>|…|…|…|
+|<strong>463</strong>|MMMB003-1|1|15|
+|<strong>464</strong>|MMMB026-1|1|43|
+|<strong>465</strong>|fruit1-1|1|8|
+|<strong>466</strong>|llca21-1|1|42|
+|<strong>467</strong>|llca8-1|1|58|
+468 rows × 3 columns</p>
+
+<p>This looks more familiar. With the <code class="language-plaintext highlighter-rouge">as_index</code> argument the group becomes a column (rather than a row index).</p>
+
+<p>So, now we return to our initial task translating the <code class="language-plaintext highlighter-rouge">COUNT(*) OVER(PARTITION BY)</code> clause. One approach could be to join the results of the above aggregated DataFrame with the origanal DataFrame, like</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">my_agg_df</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'set_num'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>A more common why is to use the <code class="language-plaintext highlighter-rouge">transform()</code> function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># add aggregatiom
+</span><span class="n">df_sets_with_missing_parts</span><span class="p">[</span><span class="s">'matches_per_set'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'set_num'</span><span class="p">])[</span><span class="s">'part_name'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="s">'count'</span><span class="p">)</span>
+
+<span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>searching_for_set</th>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>part_name</th>
+      <th>num_parts</th>
+      <th>matches_per_set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>00-4</td>
+      <td>Weetabix Promotional Windmill</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>126</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>066-1</td>
+      <td>Basic Building Set</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>407</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>080-1</td>
+      <td>Basic Building Set with Train</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>710</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>088-1</td>
+      <td>Super Set</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>615</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>10021-1</td>
+      <td>U.S.S. Constellation</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>974</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Let’s elaborate the magic that’s happening.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'set_num'</span><span class="p">])[</span><span class="s">'part_name'</span><span class="p">]</span>
+</code></pre></div></div>
+<p>returns a <code class="language-plaintext highlighter-rouge">GroupByDataFrame</code> which contains the group names (from <code class="language-plaintext highlighter-rouge">set_num</code>) and all row/column indicies and values related to the groups. Here only one column <code class="language-plaintext highlighter-rouge">['part_name']</code> is selected. In the next step <a href="https://github.com/pandas-dev/pandas/blob/v1.1.4/pandas/core/groupby/generic.py#L514"><code class="language-plaintext highlighter-rouge">transform</code> applies</a> the given function (<code class="language-plaintext highlighter-rouge">count</code>) to each column individually but only with the values in the current group. Finaly the results are assigned to each row in the group as shown in Fig. 4.</p>
+
+<p><img src="/ai_curious/images/sql2pandas/trnsf.png" alt=""></p>
+
+<p>Fig. 4: Aggregation with transform</p>
+
+<p>Now that we have gathered all the data we arange the results so that they can be compared to the SQL data:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># sort and pick top 16
+</span><span class="n">df_sets_with_missing_parts</span> <span class="o">=</span> <span class="n">df_sets_with_missing_parts</span><span class="p">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s">'matches_per_set'</span><span class="p">,</span> <span class="s">'num_parts'</span><span class="p">,</span> <span class="s">'set_num'</span><span class="p">,</span> <span class="s">'part_name'</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">]).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">df_sets_with_missing_parts</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>searching_for_set</th>
+      <th>set_num</th>
+      <th>set_name</th>
+      <th>part_name</th>
+      <th>num_parts</th>
+      <th>matches_per_set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>199-1</td>
+      <td>Scooter</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>41</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>199-1</td>
+      <td>Scooter</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>41</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>212-2</td>
+      <td>Scooter</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>41</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>212-2</td>
+      <td>Scooter</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>41</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>838-1</td>
+      <td>Red Roof Bricks Parts Pack, 45 Degree</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>58</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>838-1</td>
+      <td>Red Roof Bricks Parts Pack, 45 Degree</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>58</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>5151-1</td>
+      <td>Roof Bricks, Red, 45 Degrees</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>59</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>7</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>5151-1</td>
+      <td>Roof Bricks, Red, 45 Degrees</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>59</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>8</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>811-1</td>
+      <td>Red Roof Bricks, Steep Pitch</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>59</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>9</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>811-1</td>
+      <td>Red Roof Bricks, Steep Pitch</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>59</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>10</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>663-1</td>
+      <td>Hovercraft</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>60</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>11</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>663-1</td>
+      <td>Hovercraft</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>60</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>12</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>336-1</td>
+      <td>Fire Engine</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>76</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>13</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>336-1</td>
+      <td>Fire Engine</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>76</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>14</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>6896-1</td>
+      <td>Celestial Forager</td>
+      <td>Slope 45° 2 x 2</td>
+      <td>92</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>15</strong></td>
+      <td>Heartlake Pizzeria</td>
+      <td>6896-1</td>
+      <td>Celestial Forager</td>
+      <td>Slope 45° 2 x 2 Double Convex</td>
+      <td>92</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># assert equals
+</span><span class="k">if</span> <span class="ow">not</span> <span class="n">USE_BIGQUERY</span><span class="p">:</span>
+    <span class="n">sets_with_missing_parts</span> <span class="o">=</span> <span class="n">sets_with_missing_parts</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    
+<span class="n">pd</span><span class="p">.</span><span class="n">_testing</span><span class="p">.</span><span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">sets_with_missing_parts</span><span class="p">,</span> <span class="n">df_sets_with_missing_parts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The results are matching!</p>
+
+<p><img src="/ai_curious/images/sql2pandas/penguin.png" alt=""> We got it. We can buy the small Fire Engine to fix the roof of the fireplace. Now need for a new Pizzeria. :-)</p>
+
+<p><img src="/ai_curious/images/sql2pandas/chick.png" alt=""> (#@§?!*#) Are you sure your data is usefull for anything?</p>
+
+<h2 id="recursion-lost-in-trees">
+<a class="anchor" href="#recursion-lost-in-trees" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recursion <em>(Lost in trees?)</em>
+</h2>
+<p>We solved the red brick problem. But since we have the data already open, let’s have a closer look at the <em>Fire Engine</em>, set number <em>336-1</em>.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">set_name</span><span class="p">,</span>
+       <span class="n">s</span><span class="p">.</span><span class="nb">year</span><span class="p">,</span>
+       <span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+       <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">theme_name</span><span class="p">,</span>
+       <span class="n">t</span><span class="p">.</span><span class="n">parent_id</span>
+  <span class="k">FROM</span> <span class="k">sets</span> <span class="n">s</span><span class="p">,</span>
+       <span class="n">themes</span> <span class="n">t</span>
+ <span class="k">WHERE</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">theme_id</span>
+   <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">set_num</span> <span class="o">=</span> <span class="s1">'336-1'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>set_name</th>
+      <th>year</th>
+      <th>id</th>
+      <th>theme_name</th>
+      <th>parent_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fire Engine</td>
+      <td>1968</td>
+      <td>376</td>
+      <td>Fire</td>
+      <td>373.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>fire engine</em> is quiet old (from 1968) and it belongs to the theme <em>Fire</em>. 
+The <code class="language-plaintext highlighter-rouge">themes</code> table also includes as column called <code class="language-plaintext highlighter-rouge">parent_id</code>. This suggests that <code class="language-plaintext highlighter-rouge">themes</code> is a hierarchical structure.
+We can check this with an recursive <code class="language-plaintext highlighter-rouge">WITH</code>-clause in SQL. (*BQ: recursive WITH is not implemented in BIGQUERY.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">WITH</span> <span class="k">RECURSIVE</span> <span class="n">hier</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_id</span><span class="p">,</span> <span class="k">level</span><span class="p">)</span> <span class="k">AS</span> <span class="p">(</span> 
+    
+    <span class="c1">-- init recursion</span>
+    <span class="k">SELECT</span> <span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> 
+           <span class="n">t</span><span class="p">.</span><span class="n">parent_id</span><span class="p">,</span> 
+           <span class="mi">0</span> <span class="k">AS</span> <span class="k">level</span> 
+      <span class="k">FROM</span> <span class="n">themes</span> <span class="n">t</span> 
+     <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">376</span>
+    
+    <span class="k">UNION</span> <span class="k">ALL</span>
+    
+    <span class="c1">-- recursive call</span>
+    <span class="k">SELECT</span> <span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> 
+           <span class="n">t</span><span class="p">.</span><span class="n">parent_id</span><span class="p">,</span> 
+           <span class="n">h</span><span class="p">.</span><span class="k">level</span> <span class="o">+</span><span class="mi">1</span> 
+      <span class="k">FROM</span> <span class="n">themes</span> <span class="n">t</span><span class="p">,</span> 
+           <span class="n">hier</span> <span class="n">h</span> 
+     <span class="k">WHERE</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">parent_id</span>
+    
+<span class="p">)</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">OVER</span><span class="p">()</span> <span class="o">-</span> <span class="k">level</span> <span class="k">AS</span> <span class="k">level</span><span class="p">,</span> 
+       <span class="n">name</span> <span class="k">as</span> <span class="n">theme</span><span class="p">,</span> 
+       <span class="n">GROUP_CONCAT</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="s1">' --&gt; '</span><span class="p">)</span> <span class="n">over</span><span class="p">(</span><span class="k">order</span> <span class="k">by</span> <span class="k">level</span> <span class="k">desc</span><span class="p">)</span> <span class="n">path</span>
+  <span class="k">FROM</span> <span class="n">hier</span> 
+ <span class="k">ORDER</span> <span class="k">BY</span> <span class="k">level</span><span class="p">;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>level</th>
+      <th>theme</th>
+      <th>path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Classic</td>
+      <td>Classic</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Vehicle</td>
+      <td>Classic –&gt; Vehicle</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Fire</td>
+      <td>Classic –&gt; Vehicle –&gt; Fire</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>OK, that looks like a reasonable hierarchie. The <code class="language-plaintext highlighter-rouge">path</code> column includes the parents and grant parents of a theme.
+What if we want to reverse the order of the path. Unfortunately <code class="language-plaintext highlighter-rouge">GROUP_CONCAT</code> in SQLite doesn’t allow us to specify a sort order in the aggregation.
+It’s possible to add custom aggregation function in some databases. In SQLite we can compile <a href="https://www.sqlite.org/appfunc.html">application defined function</a> or in Oracle we can define <a href="https://docs.oracle.com/cd/B28359_01/appdev.111/b28425/aggr_functions.htm">customized aggregation function</a> even at runtime as types.</p>
+
+<p>Quiet some steps need to be taken to make the database use costumized aggregation efficently, so we can use them like regulare aggregation and windowing function. In Oracle for instance we have to define:</p>
+
+<ol>
+  <li>initial values:
+    <pre><code class="language-plsql"> total := 0; 
+ n := 0;
+</code></pre>
+  </li>
+  <li>calculation per iteration step:
+    <pre><code class="language-plsql"> total := total + this_step_value; 
+ n := n + 1;
+</code></pre>
+  </li>
+  <li>deletion per iteration for windowing:
+    <pre><code class="language-plsql"> total := total - removed_step_value; 
+ n := n - 1;
+</code></pre>
+  </li>
+  <li>merging for parallel execution:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> total := total_worker1 + total_worker2; 
+ n := n_worker1 + n_worker2; 
+</code></pre></div>    </div>
+  </li>
+  <li>termination:
+    <pre><code class="language-plsql"> my_avg := total / nullif(n-1, 0)
+</code></pre>
+  </li>
+</ol>
+
+<p>Now, how are we gonna do this in Pandas? We start by traversing the hierarchie.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fire_engine_info</span> <span class="o">=</span> <span class="n">df_themes</span><span class="p">[</span><span class="n">df_themes</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">376</span><span class="p">].</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">fire_engine_info</span><span class="p">[</span><span class="s">'level'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">parent_id</span> <span class="o">=</span> <span class="n">fire_engine_info</span><span class="p">.</span><span class="n">parent_id</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">lvl</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">parent_id</span><span class="p">)</span> <span class="ow">and</span> <span class="n">lvl</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">lvl</span><span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">new_info</span> <span class="o">=</span> <span class="n">df_themes</span><span class="p">[</span><span class="n">df_themes</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">==</span> <span class="n">parent_id</span><span class="p">].</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">new_info</span><span class="p">[</span><span class="s">'level'</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvl</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">new_info</span><span class="p">.</span><span class="n">parent_id</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fire_engine_info</span> <span class="o">=</span> <span class="n">fire_engine_info</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_info</span><span class="p">)</span>
+
+<span class="n">fire_engine_info</span><span class="p">[</span><span class="s">'grp'</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">fire_engine_info</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>id</th>
+      <th>name</th>
+      <th>parent_id</th>
+      <th>level</th>
+      <th>grp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>375</strong></td>
+      <td>376</td>
+      <td>Fire</td>
+      <td>373.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><strong>372</strong></td>
+      <td>373</td>
+      <td>Vehicle</td>
+      <td>365.0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><strong>364</strong></td>
+      <td>365</td>
+      <td>Classic</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>On the one hand this is pretty need, since we can do what ever we want in a manually coded loop. On the other hand I doubt that it is very efficent when we have to deal with lots of data. But to be fair, Recursive <code class="language-plaintext highlighter-rouge">WITH</code> isn’t that fast either in SQL.</p>
+
+<p>Finaly we consider how to do customized aggregation. We could do it in the loop above or we can rather use the library’s <code class="language-plaintext highlighter-rouge">transform</code> or <code class="language-plaintext highlighter-rouge">apply</code> functions.</p>
+
+<p>We define a custom aggregation function <code class="language-plaintext highlighter-rouge">cat_sorted</code> and then use the <code class="language-plaintext highlighter-rouge">apply</code> function like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cat_sorted</span><span class="p">(</span><span class="n">ser</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">val_col</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">sort_col</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="n">u</span><span class="o">=</span><span class="s">' --&gt; '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">.</span><span class="nb">id</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ser</span><span class="p">)].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">sort_col</span><span class="p">)[</span><span class="n">val_col</span><span class="p">].</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">u</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fire_engine_info</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">cat_sorted</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fire_engine_info</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'level'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>id</th>
+      <th>name</th>
+      <th>parent_id</th>
+      <th>level</th>
+      <th>grp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Fire –&gt; Vehicle –&gt; Classic</td>
+      <td> </td>
+      <td>Vehicle –&gt; Classic</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can also apply rolling or windowing behaviour.</p>
+<blockquote>
+  <p>Note that a rolling representation or windowing on string values is not possible because Pandas only allows numeric values for those action.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fire_engine_info</span><span class="p">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s">'level'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span><span class="p">),</span> <span class="n">raw</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>375      1.0
+372     11.0
+364    111.0
+Name: level, dtype: float64
+</code></pre></div></div>
+
+<p>Now, we not only understand the numbers on the lego package but also have a better understandig of Pandas.</p>
+
+<h2 id="summary-got-it">
+<a class="anchor" href="#summary-got-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary <em>(Got it!)</em>
+</h2>
+
+<p>SQL stays my favourite language to access structured data arranged over many tables. Pandas shines when data already is gathered together and easily accessable (e.g. as csv file).
+There are alternatives to Pandas to build ml pipelines, such as <a href="https://docs.dask.org/en/latest/">Dask</a> or <a href="https://docs.rapids.ai/api/cudf/stable/">CUDF</a>. But learning Pandas is a good foundation to learn more of them.</p>
+
+<h2 id="resources">
+<a class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h2>
+<p>To play with the examples:</p>
+<ul>
+  <li>
+<em>Res. 1</em> Kaggle notebook: https://www.kaggle.com/joatom/a-handful-of-bricks-from-sql-to-pandas</li>
+  <li>
+<em>Res. 2</em> Docker container: https://github.com/joatom/blog-resources/tree/main/handful_bricks</li>
+</ul>
+
+<h2 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+<ul>
+  <li>
+<em>Ref. 1</em> Pandas SQL comparison: https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html</li>
+  <li>
+<em>Ref. 2</em> The Lego dataset: https://www.kaggle.com/rtatman/lego-database</li>
+</ul>
+
+  </div><a class="u-url" href="/ai_curious/markdown/2020/12/12/a-handful-of-bricks-from-sql-to-pandas.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ai_curious/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ai_curious/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ai_curious/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Personal blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/joatom" title="joatom"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/johannestomason" title="johannestomason"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
