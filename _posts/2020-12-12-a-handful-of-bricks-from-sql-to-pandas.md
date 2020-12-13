@@ -7,6 +7,8 @@ title: A handful of bricks - from SQL to Pandas
 ---
 # A handful of bricks - from SQL to Pandas
 
+Original article published at [datamuni.com](https://datamuni.com/@joatom/a-handful-of-bricks-from-sql-to-pandas).
+
 ## SQL ~~vs.~~ and Pandas
 
 I love SQL. It's been around for decades to arrange and analyse data. Data is kept in tables which are stored in a relational structure. Consistancy and data integraty is kept in mind when designing a relational data model. However, when it comes to machine learning other data structures such as matrices and tensors become important to feat the underlying algorithms and make data processing more efficient. That's where Pandas steps in. From a SQL developer perspective it is the library to close the gap between your data storage and the ml frameworks.
