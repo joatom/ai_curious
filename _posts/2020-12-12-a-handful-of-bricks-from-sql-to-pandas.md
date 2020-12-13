@@ -5,11 +5,10 @@ description: A step by step guide to learn Pandas from a SQL perspective.
 categories: [markdown]
 title: A handful of bricks - from SQL to Pandas
 ---
-# A handful of bricks - from SQL to Pandas
 
 Original article published at [datamuni.com](https://datamuni.com/@joatom/a-handful-of-bricks-from-sql-to-pandas).
 
-## SQL ~~vs.~~ and Pandas
+# SQL ~~vs.~~ and Pandas
 
 I love SQL. It's been around for decades to arrange and analyse data. Data is kept in tables which are stored in a relational structure. Consistancy and data integraty is kept in mind when designing a relational data model. However, when it comes to machine learning other data structures such as matrices and tensors become important to feat the underlying algorithms and make data processing more efficient. That's where Pandas steps in. From a SQL developer perspective it is the library to close the gap between your data storage and the ml frameworks.
 
@@ -18,15 +17,15 @@ This blog post shows how to translate some common and some advanced techniques f
 The coding examples are built upon a [Lego Dataset](https://www.kaggle.com/rtatman/lego-database) (Ref. 2), that contains a couple of tables with data about various lego sets. 
 > To follow along I've provided a [notebook](https://www.kaggle.com/joatom/a-handful-of-bricks-from-sql-to-pandas) (Res. 1) on kaggle, where you can play with the blog examples either using SQLite or Bigquery. You can also checkout a [docker container](https://github.com/joatom/blog-resources/tree/main/handful_bricks) (Res. 2) to play on your home machine.
 
-## Missing bricks
+# Missing bricks
 
 First listen to this imaginary dialogue that guides us throug the coding:
 
-![]({{ site.baseurl }}/images/sql2pandas/chick.png) *I miss all red bricks of the Lego Pizzeria. I definetly need a new one.*
+:hatched_chick: *I miss all red bricks of the Lego Pizzeria. I definetly need a new one.*
 
-![]({{ site.baseurl }}/images/sql2pandas/penguin.png) *Don't worry. We can try to solve this with data. That will be fun. :-)*
+:penguin: *Don't worry. We can try to solve this with data. That will be fun. :-)*
 
-![]({{ site.baseurl }}/images/sql2pandas/chick.png) *(!@#%&) You're kidding, right?*
+:hatched_chick: *(!@#%&) You're kidding, right?*
 
 Now that we have a mission we are ready to code and figuere out how to deal with missing bricks.
 First we inspect the tables. They are organized as shown in the relational diagram (Fig. 1).
@@ -41,7 +40,7 @@ There are colors, parts, sets and inventories. We should start by searching for 
 
 Fig. 2: Lego Box with set number
 
-## A simple Filter *(The behaviour of brackets.)*
+# A simple Filter *(The behaviour of brackets.)*
 A simple `like`-filter on the `sets` table will return the set info.
 
 ```sql
@@ -119,7 +118,7 @@ bool_coll[3580:3590]
 
 
 
-
+```bash
     3580    False
     3581    False
     3582     True
@@ -131,7 +130,7 @@ bool_coll[3580:3590]
     3588    False
     3589    False
     Name: set_num, dtype: bool
-
+```
 
 
 The boolean collection now gets past to the DataFrame and filters the rows:
@@ -183,7 +182,7 @@ df_sets[df_sets['set_num'] == '41311-1'][['name','year']]
 
 
 
-## Indexing *(What actually is an index?)*
+# Indexing *(What actually is an index?)*
 Another way to access a row in Pandas is by using the row index. With the `loc` function (and brackets) we select the *Pizzeria* and another arbitrary set. We use the row numbers to filter the rows.
 
 
@@ -245,10 +244,10 @@ df_sets.axes # both
 
 
 
-
+```bash
     [RangeIndex(start=0, stop=11673, step=1),
      Index(['set_num', 'name', 'year', 'theme_id', 'num_parts'], dtype='object')]
-
+```
 
 
 The row index doesn't necessarely be the row number. We can also convert a column into a row index.
@@ -316,11 +315,11 @@ Now we get a sence what is meant by an index in Pandas in contrast to SQL.
 
 An **index in Pandas** can rather be seen as a **dimensional access** to the data values. They can be distingueshed between row and column indices.
 
-## Joins *(Why merge doesn't mean upsert.)*
+# Joins *(Why merge doesn't mean upsert.)*
 
-![]({{ site.baseurl }}/images/sql2pandas/chick.png) *What are we gonna do now about my missing parts?*
+:hatched_chick: *What are we gonna do now about my missing parts?*
 
-![]({{ site.baseurl }}/images/sql2pandas/penguin.png) *We don't have all the information we need, yet. We need to join the other tables.*
+:penguin: *We don't have all the information we need, yet. We need to join the other tables.*
 
 Though there is a function called `join` to join DataFrames I always use the `merge` function. This can be a bit confusing, when you are used to Oracle where *merge* means upsert/updelete rather then combining two tables.
 
@@ -610,11 +609,11 @@ df_missing_parts
 
 
 
-![]({{ site.baseurl }}/images/sql2pandas/penguin.png) *There we go, we are missing one 2x2 brick and tw0 2x2 double convex.*
+:penguin: *There we go, we are missing one 2x2 brick and tw0 2x2 double convex.*
 
-![]({{ site.baseurl }}/images/sql2pandas/chick.png) *Yup, that's the roof of the fireplace. I knew that before.*
+:hatched_chick: *Yup, that's the roof of the fireplace. I knew that before.*
 
-## Conditional Joins and Aggregation *(Almost done!)*
+# Conditional Joins and Aggregation *(Almost done!)*
 
 Next we search for sets that contain the missing parts. The quantity of the parts in the found sets must be greater or equal the quantity of the missing parts.
 
@@ -667,7 +666,7 @@ LIMIT 16
 ```
 
 
-### Conditional Join
+## Conditional Join
 
 There is no intuitive way to do a conditional join on DataFrames. The easiest I've [seen](https://stackoverflow.com/questions/23508351/how-to-do-workaround-a-conditional-join-in-python-pandas) so far is a two step solution.
 As substitution for the SQL `WITH`-clause we can reuse `df_missing_parts`.
@@ -685,7 +684,7 @@ df_sets_with_missing_parts = df_sets_with_missing_parts[['set_name_missing'] + [
 df_sets_with_missing_parts.columns = ['searching_for_set'] + cols
 ```
 
-### Aggregation
+## Aggregation
 
 In the next step the aggregation of the analytic function 
 ```sql
@@ -852,11 +851,11 @@ pd._testing.assert_frame_equal(sets_with_missing_parts, df_sets_with_missing_par
 
 The results are matching!
 
-![]({{ site.baseurl }}/images/sql2pandas/penguin.png) We got it. We can buy the small Fire Engine to fix the roof of the fireplace. Now need for a new Pizzeria. :-)
+:penguin: We got it. We can buy the small Fire Engine to fix the roof of the fireplace. Now need for a new Pizzeria. :-)
 
-![]({{ site.baseurl }}/images/sql2pandas/chick.png) (#@§?!*#) Are you sure your data is usefull for anything?
+:hatched_chick: (#@§?!*#) Are you sure your data is usefull for anything?
 
-## Recursion *(Lost in trees?)*
+# Recursion *(Lost in trees?)*
 We solved the red brick problem. But since we have the data already open, let's have a closer look at the *Fire Engine*, set number *336-1*.
 ```sql
 SELECT s.name AS set_name,
@@ -1018,26 +1017,26 @@ fire_engine_info.rolling(10,min_periods=1)['level'].apply(lambda x: sum(10**x), 
 
 
 
-
+```bash
     375      1.0
     372     11.0
     364    111.0
     Name: level, dtype: float64
-
+```
 
 
 Now, we not only understand the numbers on the lego package but also have a better understandig of Pandas.
 
-## Summary *(Got it!)*
+# Summary *(Got it!)*
 
 SQL stays my favourite language to access structured data arranged over many tables. Pandas shines when data already is gathered together and easily accessable (e.g. as csv file).
 There are alternatives to Pandas to build ml pipelines, such as [Dask](https://docs.dask.org/en/latest/) or [CUDF](https://docs.rapids.ai/api/cudf/stable/). But learning Pandas is a good foundation to learn more of them.
 
-## Resources 
+# Resources 
 To play with the examples:
 - *Res. 1* Kaggle notebook: https://www.kaggle.com/joatom/a-handful-of-bricks-from-sql-to-pandas
 - *Res. 2* Docker container: https://github.com/joatom/blog-resources/tree/main/handful_bricks
 
-## References
+# References
 - *Ref. 1* Pandas SQL comparison: https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html
 - *Ref. 2* The Lego dataset: https://www.kaggle.com/rtatman/lego-database
