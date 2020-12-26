@@ -1,5 +1,5 @@
 # Blog-Beiträge automatisch übersetzen
-[:de:](https://github.com/joatom/ai_curious/blob/master/_posts/blog_translator.md) [:us:](https://joatom.github.io/ai_curious/markdown/2020/12/26/blog-translator.html)
+[:de:](https://github.com/joatom/ai_curious/blob/master/_posts/blog_translator.md) [:us:](https://joatom.github.io/ai_curious/nlp/2020/12/26/blog-translator.html)
 
 > Achtung! Dieser Text wurde automatisch übersetzt!
 
