@@ -7,7 +7,7 @@ title: Automatically translate blog posts
 ---
 
 # Automatically translate blog posts 
-[:de:](https://github.com/joatom/ai_curious/blob/master/_posts/blog_translator_en.md) <--> [:us:](https://joatom.github.io/ai_curious/markdown/2020/12/26/blog-translator.html) 
+[:de:](https://github.com/joatom/ai_curious/blob/master/_posts/blog_translator.md) <-> [:us:](https://joatom.github.io/ai_curious/markdown/2020/12/26/blog-translator.html) 
 
 > Attention! This text has been automatically translated! 
 
@@ -18,7 +18,7 @@ For translation I use the popular NLP framework of [huggingface.co](https://hugg
 As expected, the Markdown syntax does not immediately work correctly when translating. 
 So I had to make some adjustments at the beginning and afterwards. 
 
-The code (including pre- and post-processing) that I used to translate the markdown files can be found [here](https://github.com/joatom/blog-resources/tree/main/blog_translator). 
+The code (including pre- and post-processing) I used for the translation of the markdown files can be found [here](https://github.com/joatom/blog-resources/tree/main/blog_translator). 
 But since it's just a few lines of code, we can also look at it here: 
 
 ```python 
@@ -82,4 +82,8 @@ Since this is my first NLP application, I left it with this *Hello World* code. 
 
 By the way, the translation just made me adapt my German writing style. 
 For example, sarcasm doesn't work so well after translation, so I avoided it. 
-In addition, it often depends on the correct choice of words (e.g. there is no markdown command, but there is a markdown syntax).
+Also, it often depends on the correct choice of words (e.g. there is no markdown command, but there is markdown syntax). <<eol>
+
+Best regards 
+
+Johannes & the Robot

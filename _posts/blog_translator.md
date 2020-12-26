@@ -1,5 +1,5 @@
 # Blog-Beiträge automatisch übersetzen
-[:de:](https://github.com/joatom/ai_curious/blob/master/_posts/blog_translator_de.md) <--> [:us:](https://joatom.github.io/ai_curious/markdown/2020/12/26/blog-translator.html)
+[:de:](https://github.com/joatom/ai_curious/blob/master/_posts/blog_translator.md) <--> [:us:](https://joatom.github.io/ai_curious/markdown/2020/12/26/blog-translator.html)
 
 > Achtung! Dieser Text wurde automatisch übersetzt!
 
@@ -75,3 +75,7 @@ Da das meine erster NLP-Anwendung ist, habe ich es bei diesem *Hello World*-Code
 Übrigens, die Übersetzung hat mich ebenfallls dazu gebracht meinen deutschen Schreibstil anzupassen.
 Beispielsweise funktioniert Sarkasmus nach der Übersetzung nicht so gut, also hab ich es vermieden.
 Außerdem kommt es auch häufig auf die richtige Wortwahl an (z.B. gibt es kein Markdown-Befehl, jedoch gibt es Markdown-Syntax).
+
+Viele Grüße
+
+Johannes & der Roboter
