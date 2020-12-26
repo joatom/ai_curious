@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: A step by step guide to learn Pandas from a SQL perspective.
-categories: [markdown]
+categories: [SQL, Pandas]
 title: A handful of bricks - from SQL to Pandas
 ---
 
