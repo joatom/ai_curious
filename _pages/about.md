@@ -4,22 +4,19 @@ title: About Me
 permalink: /about/
 ---
 
-Hi I'm Johannes,
+Hi there! 
 
-and that's me:
+I'm Johannes and this is my hobby blog. The content is limited to topics I'm curious in my spare time. Don't expect to find here anything related to my job.
 
-Day: co-head of my family, software developer
+I'm happy when you leave a comment on blog posts you like.
 
-Night: AI curious
+Cheers,
 
-
-
-
+Johannes
 
 
 
-
-
+------
 
 This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
 

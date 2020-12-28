@@ -1,8 +1,10 @@
 ---
 toc: true
 layout: post
+comments: true
 description: A step by step guide to learn Pandas from a SQL perspective.
 categories: [SQL, Pandas]
+image: images/logo_sql2pandas.jpg
 title: A handful of bricks - from SQL to Pandas
 ---
 

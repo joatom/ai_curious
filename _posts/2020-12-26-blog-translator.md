@@ -1,6 +1,7 @@
 ---
 toc: true
 layout: post
+comments: true
 description: How to translate a German blog post to English.
 categories: [NLP]
 title: Automatically translate blog posts
