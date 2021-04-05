@@ -9,16 +9,16 @@
 <meta property="og:title" content="Sterbefälle nach Altersgruppen und Bundesländern in Deutschland von 2016 bis 2021" />
 <meta name="author" content="Johannes Tomasoni" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="interaktiv auswerten" />
-<meta property="og:description" content="interaktiv auswerten" />
-<link rel="canonical" href="https://joatom.github.io/ai_curious/eda/interactive%20notebook/2021/04/06/mortality-germany_de.html" />
-<meta property="og:url" content="https://joatom.github.io/ai_curious/eda/interactive%20notebook/2021/04/06/mortality-germany_de.html" />
+<meta name="description" content="Interaktive Auswertung der Sterbefallzahlen vor und während Covid19." />
+<meta property="og:description" content="Interaktive Auswertung der Sterbefallzahlen vor und während Covid19." />
+<link rel="canonical" href="https://joatom.github.io/ai_curious/eda/2021/04/06/mortality-germany_de.html" />
+<meta property="og:url" content="https://joatom.github.io/ai_curious/eda/2021/04/06/mortality-germany_de.html" />
 <meta property="og:site_name" content="AI curious" />
 <meta property="og:image" content="https://joatom.github.io/ai_curious/images/mortality_germany.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-04-06T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://joatom.github.io/ai_curious/eda/interactive%20notebook/2021/04/06/mortality-germany_de.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/eda/interactive%20notebook/2021/04/06/mortality-germany_de.html"},"image":"https://joatom.github.io/ai_curious/images/mortality_germany.png","headline":"Sterbefälle nach Altersgruppen und Bundesländern in Deutschland von 2016 bis 2021","dateModified":"2021-04-06T00:00:00-05:00","datePublished":"2021-04-06T00:00:00-05:00","author":{"@type":"Person","name":"Johannes Tomasoni"},"description":"interaktiv auswerten","@context":"https://schema.org"}</script>
+{"url":"https://joatom.github.io/ai_curious/eda/2021/04/06/mortality-germany_de.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/eda/2021/04/06/mortality-germany_de.html"},"image":"https://joatom.github.io/ai_curious/images/mortality_germany.png","headline":"Sterbefälle nach Altersgruppen und Bundesländern in Deutschland von 2016 bis 2021","dateModified":"2021-04-06T00:00:00-05:00","datePublished":"2021-04-06T00:00:00-05:00","author":{"@type":"Person","name":"Johannes Tomasoni"},"description":"Interaktive Auswertung der Sterbefallzahlen vor und während Covid19.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -73,7 +73,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Sterbefälle nach Altersgruppen und Bundesländern in Deutschland von 2016 bis 2021</h1><p class="page-description">interaktiv auswerten</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-04-06T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Sterbefälle nach Altersgruppen und Bundesländern in Deutschland von 2016 bis 2021</h1><p class="page-description">Interaktive Auswertung der Sterbefallzahlen vor und während Covid19.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-04-06T00:00:00-05:00" itemprop="datePublished">
         Apr 6, 2021
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -89,9 +89,6 @@ window.onload = wrap_img;
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
         <a class="category-tags-link" href="/ai_curious/categories/#EDA">EDA</a>
-        &nbsp;
-      
-        <a class="category-tags-link" href="/ai_curious/categories/#interactive Notebook">interactive Notebook</a>
         
       
       </p>
@@ -176,33 +173,12 @@ Zum Schluss folgt ein technisches Fazit zum Framework.
 </p>
 <div class="flash flash-warn">
     <svg class="octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
-    <strong>Important: </strong>Die Sterbefallzahlen sind kein Indikator für die Gefährlichkeit von Covid19. Sie bilden lediglich retrospektiv die Anzahl verstorbener Menschen dar.
+    <strong>Important: </strong>Die Sterbefallzahlen sind kein Indikator für die Gefährlichkeit von Covid19. Sie bilden lediglich rückwirkend betrachtet die Anzahl verstorbener Menschen ab.
 </div>
 
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Auswertungszeitpunkt: 05.04.2021
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -210,7 +186,7 @@ Zum Schluss folgt ein technisches Fazit zum Framework.
 <a class="anchor" href="#Datenherkunft" aria-hidden="true"><span class="octicon octicon-link"></span></a>Datenherkunft<a class="anchor-link" href="#Datenherkunft"> </a>
 </h1>
 <p>Für die Auswertung von Sterbefällen in Deutschland werden die aktuellen Sterbefalldaten vom Statistischen Bundesamt [SA21] herangezogen. Die Daten beinhalten unter anderem Aufstellungen der Todesfälle nach Altersgruppen oder Bundesländern. In dieser Analyse werden die monatlichen Sterbefallzahlen für den Zeitraum März 2016 bis Februar 2021 herangezogen. Die aktuellsten Daten liegen derzeit nur bis Februar 2021 vor und beinhalten einen Schätzanteil, der in der Datenquelle im Reiter "Hinweise" erklärt ist.
-Neben den Sterbefallzahlen werden zusätzlich Daten Bevölkerungszahl und -dichte je Bundesland verarbeitet [SA20], wobei sich diese Zahlen auf den Stichtag 31.12.2019 beschränken.</p>
+Neben den Sterbefallzahlen werden zusätzlich Daten über die Bevölkerungsdichte der Bundesländer verarbeitet [SA20], wobei sich diese Zahlen auf den Stichtag 31.12.2019 beziehen.</p>
 <h1 id="Verarbeitung-der-Daten">
 <a class="anchor" href="#Verarbeitung-der-Daten" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verarbeitung der Daten<a class="anchor-link" href="#Verarbeitung-der-Daten"> </a>
 </h1>
@@ -234,12 +210,12 @@ Neben den Sterbefallzahlen werden zusätzlich Daten Bevölkerungszahl und -dicht
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-e87f138cba7049cfa4c49ff6ee53a059"></div>
+<div id="altair-viz-4f46edc1a36a4ed9a58fe9c652e26c71"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e87f138cba7049cfa4c49ff6ee53a059") {
-      outputDiv = document.getElementById("altair-viz-e87f138cba7049cfa4c49ff6ee53a059");
+    if (outputDiv.id !== "altair-viz-4f46edc1a36a4ed9a58fe9c652e26c71") {
+      outputDiv = document.getElementById("altair-viz-4f46edc1a36a4ed9a58fe9c652e26c71");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -323,11 +299,8 @@ In einigen Abbildung werden die berechneten Punkte interpoliert um die Lesbarkei
 <h1 id="Todesfälle-nach-Alter">
 <a class="anchor" href="#Todesf%C3%A4lle-nach-Alter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todesfälle nach Alter<a class="anchor-link" href="#Todesf%C3%A4lle-nach-Alter"> </a>
 </h1>
-<ul>
-<li>x-Achse: "Alter bis" in 5er-Schritten. Der Punkt Alter 55 umfasst z.B. alle Todesfälle im Alter zwischen 50 und 55. Todesfälle mit Alter &gt; 100 werden dem Alter 100 zugerechnet.</li>
-<li>y-Achse: durchschnittliche Anzahl an Todesfällen pro Monat</li>
-</ul>
-<p>In der ersten Grafik lassen sich die <strong>Monate interaktiv</strong> per Dropdown-Box auswählen. "Jahre" beinhaltet die Werte alle Monate.</p>
+<p>Im nachstehenden Diagramm wird die durchschnittliche Anzahl an <em>Todesfällen pro Monat</em> je <em>Altersgruppe</em> abgebildet. Eine Altersgruppe umfasst fünf Jahre. Der Punkt <em>Alter 55</em> umfasst z.B. alle Todesfälle im Alter zwischen 50 und 55. Todesfälle der über 100-jährigen werden im Punkt <em>100</em> abgebildet.</p>
+<p>Die Werte sind jeweils über den vor-Covid19-Zeitraum (blau) und den Covid19-Zeitraum (orange) verdichtet. Im Diagramm lassen sich die <em>Monate</em> per Dropdown-Box auswählen.</p>
 
 </div>
 </div>
@@ -361,12 +334,12 @@ form.vega-bindings {
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-ce1cc7abf54e4b38a20f195207aca7df"></div>
+<div id="altair-viz-194d8e6f35534c60b2b0e38b55d5cef2"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-ce1cc7abf54e4b38a20f195207aca7df") {
-      outputDiv = document.getElementById("altair-viz-ce1cc7abf54e4b38a20f195207aca7df");
+    if (outputDiv.id !== "altair-viz-194d8e6f35534c60b2b0e38b55d5cef2") {
+      outputDiv = document.getElementById("altair-viz-194d8e6f35534c60b2b0e38b55d5cef2");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -440,12 +413,12 @@ form.vega-bindings {
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-3aa4dcffe41d489da3809847bcadc82b"></div>
+<div id="altair-viz-28dc274d0d444ae39cb453530728ff94"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3aa4dcffe41d489da3809847bcadc82b") {
-      outputDiv = document.getElementById("altair-viz-3aa4dcffe41d489da3809847bcadc82b");
+    if (outputDiv.id !== "altair-viz-28dc274d0d444ae39cb453530728ff94") {
+      outputDiv = document.getElementById("altair-viz-28dc274d0d444ae39cb453530728ff94");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -516,11 +489,7 @@ form.vega-bindings {
 <h1 id="Todesfälle-nach-Bundesland">
 <a class="anchor" href="#Todesf%C3%A4lle-nach-Bundesland" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todesfälle nach Bundesland<a class="anchor-link" href="#Todesf%C3%A4lle-nach-Bundesland"> </a>
 </h1>
-<p>Für die Altersgruppen <em>0-65</em> und <em>65+</em> lassen sich je <em>Bundesland</em> die Todesfälle für die beiden Zeiträume auswerten. Per Dropdown-Box kann zwischen den Kennzahlen <em>Todesfälle</em> oder <em>Todesfälle je 100.000 Einwohner</em> gewählt werden.</p>
-<ul>
-<li>x-Achse: durchschnittliche Anzahl an Todesfällen (je 100.000 Einwohner) pro Monat.</li>
-<li>y-Achse: Gliederung der beiden Zeiträume nach Bundesland.</li>
-</ul>
+<p>Im nächsten Diagramm lassen sich für die Altersgruppen <em>0-65</em> und <em>65+</em> die Todesfälle für die beiden Zeiträume je <em>Bundesland</em> auswerten. Per Dropdown-Box kann zwischen den Kennzahlen <em>Todesfälle</em> oder <em>Todesfälle je 100.000 Einwohner</em> gewählt werden.</p>
 
 </div>
 </div>
@@ -537,12 +506,12 @@ form.vega-bindings {
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-b77ff6c9c00441f78d30feb25bb253ed"></div>
+<div id="altair-viz-d1aa5edd152840f790b943cbb667fb03"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b77ff6c9c00441f78d30feb25bb253ed") {
-      outputDiv = document.getElementById("altair-viz-b77ff6c9c00441f78d30feb25bb253ed");
+    if (outputDiv.id !== "altair-viz-d1aa5edd152840f790b943cbb667fb03") {
+      outputDiv = document.getElementById("altair-viz-d1aa5edd152840f790b943cbb667fb03");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -602,8 +571,8 @@ form.vega-bindings {
 <h2 id="Beobachtung">
 <a class="anchor" href="#Beobachtung" aria-hidden="true"><span class="octicon octicon-link"></span></a>Beobachtung<a class="anchor-link" href="#Beobachtung"> </a>
 </h2>
-<p>Nordrhein-Westfalen (NW) hat als Einwohner-stärkstes Land die meisten Todesfälle. In jedem Bundesland sind Anstiege der Todeszahlen im Covid19-Zeitraum zu erkennen. Allerdings sind lediglich minimale Anstieg in Hessen (HE) und Bayern (BY) für die Altersgruppen unter 65 Jahren zu erkennen. In den anderen Bundesländern gibt es keinen merklichen Anstieg in dieser Altersgruppe.</p>
-<p>Bei der Darstellung der Todesfällen je Einwohner gibt es in der Altersgruppe unter 65 kleineren Schwankungen. Der Anstieg an Todesfällen in Nordrhein-Westfalen (NW) ist etwas niegriger als in Bayern (BY) und in etwa so hoch wie in Baden-Württemberg (BW). Den stärksten Anstieg verzeichnet hier Sachsen (SN) und Brandenburg (BB).
+<p>Nordrhein-Westfalen (NW) hat als Einwohner-stärkstes Land die meisten Todesfälle. In jedem Bundesland sind Anstiege der Todeszahlen im Covid19-Zeitraum zu erkennen. Allerdings sind lediglich minimale Anstiege in Hessen (HE) und Bayern (BY) für die Altersgruppen unter 65 Jahren zu erkennen. In den anderen Bundesländern gibt es keinen merklichen Anstieg in dieser Altersgruppe.</p>
+<p>Bei der Darstellung der Todesfällen je Einwohner gibt es in der Altersgruppe unter 65 kleinere Schwankungen. Der Anstieg an Todesfällen in Nordrhein-Westfalen (NW) ist etwas geringer als in Bayern (BY) und in etwa so hoch wie in Baden-Württemberg (BW). Den stärksten Anstieg verzeichnet hier Sachsen (SN) und Brandenburg (BB).
 </p>
 <div class="flash">
     <svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
@@ -619,12 +588,7 @@ form.vega-bindings {
 <h1 id="Todesfälle-nach-Bundesland-und-Bevölkerungsdichte">
 <a class="anchor" href="#Todesf%C3%A4lle-nach-Bundesland-und-Bev%C3%B6lkerungsdichte" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todesfälle nach Bundesland und Bevölkerungsdichte<a class="anchor-link" href="#Todesf%C3%A4lle-nach-Bundesland-und-Bev%C3%B6lkerungsdichte"> </a>
 </h1>
-<p>Für die <em>Bundesländer</em> werden die <em>Todesfälle je 100.000 Einwohner</em> mit der <em>Bevölkerungsdichte</em> in Relation gesetz.</p>
-<ul>
-<li>x-Achse: Todesfälle je 100.000 Einwohner (monatl. Durschnitt)</li>
-<li>y-Achse: Einwohner je km^2</li>
-<li>Punkte: Absolute Todesfälle (monatl. Durchschnitt)</li>
-</ul>
+<p>Das letzte Diagramm setzt die <em>Bevölkerungsdichte</em> der <em>Bundesländer</em> mit deren <em>Todesfällen je 100.000 Einwohner</em> in Bezug.</p>
 
 </div>
 </div>
@@ -641,12 +605,12 @@ form.vega-bindings {
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-09d5e0924fff4112a1a1d9fa17d7d98f"></div>
+<div id="altair-viz-11194c2c55a34135a94051742b0b1280"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-09d5e0924fff4112a1a1d9fa17d7d98f") {
-      outputDiv = document.getElementById("altair-viz-09d5e0924fff4112a1a1d9fa17d7d98f");
+    if (outputDiv.id !== "altair-viz-11194c2c55a34135a94051742b0b1280") {
+      outputDiv = document.getElementById("altair-viz-11194c2c55a34135a94051742b0b1280");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -713,7 +677,7 @@ form.vega-bindings {
 <h3 id="Beobachtung">
 <a class="anchor" href="#Beobachtung" aria-hidden="true"><span class="octicon octicon-link"></span></a>Beobachtung<a class="anchor-link" href="#Beobachtung"> </a>
 </h3>
-<p>Die Statdstaaten (Hamburg (HH), Bremen (HB) und Berlin (BE)) mit ihrer hohen Einwohnerdichte weisen einen moderaten Anstieg der Sterbefälle aus. Schleswig-Holstein (SH) hat den geringsten Anstieg zu verzechnen.
+<p>Die Stadtstaaten (Hamburg (HH), Bremen (HB) und Berlin (BE)) weisen trotz ihrer hohen Einwohnerdichte einen nur moderaten Anstieg der Sterbefälle aus. Schleswig-Holstein (SH) hat den geringsten Anstieg zu verzeichnen.
 </p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
@@ -730,8 +694,8 @@ form.vega-bindings {
 <a class="anchor" href="#Technisches-Fazit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technisches Fazit<a class="anchor-link" href="#Technisches-Fazit"> </a>
 </h2>
 <p>Mit Altair lassen sich einfach Grafiken gestallten und interaktiv in Notebooks mit einbinden. Die Webseite beinhaltet eine Vielzahl von Beispielen [AA1]. Einige Fragestellungen werden auch im Github-Issue-Tracker [AA2] beantwortet.</p>
-<p>Ein wenig Zeit habe ich beim Debuggen im JavaScript verschwendet, wenn ich die Bindings falsch verwendet habe. Es gab aber zu jedem Problem eine Lösung [AA2] oder Workaround wie bei der Legende im Bardiagramm [AG18]. Eine gewisse Einarbeitungszeit ins Framework bleibt natürlich wie immer unumgänglich.</p>
-<p>Die Integration [FP20] in meinen Blog funktioniert einwandfrei. Ich werde das Framework bestimmt auch an anderer Stelle verwenden.</p>
+<p>Ein wenig Zeit habe ich beim Debuggen im JavaScript verschwendet, als ich die Bindings falsch verwendet habe. Es gab aber schlussendlich zu jedem Problem eine Lösung [AA2] oder Workarounds wie etwa bei der Legende im Bardiagramm [AG18]. Eine gewisse Einarbeitungszeit ins Framework bleibt natürlich wie zu erwarte unumgänglich.</p>
+<p>Die Integration [FP20] in diesen Blog funktioniert einwandfrei. Ich werde das Framework bestimmt auch an anderer Stelle verwenden.</p>
 
 </div>
 </div>
@@ -745,7 +709,7 @@ form.vega-bindings {
 <h3 id="Datenquellen">
 <a class="anchor" href="#Datenquellen" aria-hidden="true"><span class="octicon octicon-link"></span></a>Datenquellen<a class="anchor-link" href="#Datenquellen"> </a>
 </h3>
-<p>Die hier verwendeten Daten stammen vom Statistischen Bundesamtes und unterliegen der Lizenz "dl-de/by-2-0". Der Lizenztext findet sich unter www.govdata.de/dl-de/by-2-0. Die Daten wurden zum Zwecke der Analyse ausschließlich innerhalb dieses Notebooks durch Ausführung des angegebenen Programmcodes modifizert.</p>
+<p>Die hier verwendeten Daten stammen vom Statistischen Bundesamtes und unterliegen der Lizenz "dl-de/by-2-0". Der Lizenztext findet sich unter www.govdata.de/dl-de/by-2-0. Die Daten wurden zum Zwecke der Analyse ausschließlich innerhalb dieses Notebooks durch Ausführung des angegebenen Programmcodes modifiziert.</p>
 <ul>
 <li>[SB21] Statistisches Bundesamt (Destatis), 2021 (erschienen am 30. März 2021), <em>Sterbefälle - Fallzahlen nach Tagen, Wochen, Monaten, Altersgruppen, Geschlecht und Bundesländern für Deutschland 2016 - 2021</em>, abgerufen 03.04.2021, <a href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx?__blob=publicationFile">https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx?__blob=publicationFile</a>
 </li>
@@ -781,7 +745,7 @@ form.vega-bindings {
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/ai_curious/eda/interactive%20notebook/2021/04/06/mortality-germany_de.html" hidden></a>
+</script><a class="u-url" href="/ai_curious/eda/2021/04/06/mortality-germany_de.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
