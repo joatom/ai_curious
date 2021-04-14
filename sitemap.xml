@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://joatom.github.io/ai_curious/basics/2020/04/14/nonlinearity.html</loc>
-<lastmod>2020-04-14T00:00:00-05:00</lastmod>
-</url>
-<url>
 <loc>https://joatom.github.io/ai_curious/sql/pandas/2020/12/12/a-handful-of-bricks-from-sql-to-pandas.html</loc>
 <lastmod>2020-12-12T00:00:00-06:00</lastmod>
 </url>
@@ -19,6 +15,10 @@
 <url>
 <loc>https://joatom.github.io/ai_curious/eda/2021/04/06/mortality-germany_de.html</loc>
 <lastmod>2021-04-06T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://joatom.github.io/ai_curious/basics/2021/04/14/nonlinearity.html</loc>
+<lastmod>2021-04-14T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://joatom.github.io/ai_curious/about/</loc>
