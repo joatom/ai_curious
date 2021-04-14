@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Bending the space with nonlinearity",
-            "content": "I’m trying out a new kaggle feature which allows us to include kaggle notebooks in our personal blogs. This articel was initialy published as kaggle notebook in November 2020. . &lt;iframe src=”https://www.kaggle.com/embed/joatom/bending-the-space-with-nonlinearity?cellId=1&amp;kernelSessionId=46691617” height=”800” style=”margin: 0 auto; width: 100%; max-width: 950px; frameborder=”0” scrolling=”auto” title=”Bending the space with nonlinearity”&gt;&lt;/iframe&gt; .",
+            "content": "I’m trying out a new kaggle feature which allows us to include kaggle notebooks in our personal blogs. This articel was initialy published as kaggle notebook in November 2020. .",
             "url": "https://joatom.github.io/ai_curious/basics/2021/04/14/nonlinearity.html",
             "relUrl": "/basics/2021/04/14/nonlinearity.html",
             "date": " • Apr 14, 2021"
