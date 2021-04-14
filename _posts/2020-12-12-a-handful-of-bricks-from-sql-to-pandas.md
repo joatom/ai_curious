@@ -720,7 +720,7 @@ df_sets_with_missing_parts.groupby(['set_num']).count()  .sort_values('set_num',
 
 
 
-||searching_for_set|set_name|part_name|num_parts|
+| |searching_for_set|set_name|part_name|num_parts|
 |-|-|-|-|-|
 |**set_num**|||||
 |**llca8-1**|1|1|1|1|
@@ -751,7 +751,7 @@ df_sets_with_missing_parts.groupby(['set_num'], as_index = False) \
 
 
 
-||set_num|matches_per_set|total_num_parts|
+| |set_num|matches_per_set|total_num_parts|
 |-|-|-|-|
 |**0**|00-4|1|126|
 |**1**|066-1|1|407|
