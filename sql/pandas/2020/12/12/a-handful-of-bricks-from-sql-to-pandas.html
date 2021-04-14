@@ -84,7 +84,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      25 min read
+      26 min read
     
 </span></p>
 
@@ -1477,21 +1477,103 @@ The result is a two column list with the group <code class="language-plaintext h
 # df_sets_with_missing_parts.groupby(['set_num']).agg(['count', 'sum']) 
 </span></code></pre></div></div>
 
-<p>|.|searching_for_set|set_name|part_name|num_parts|
-|-|-|-|-|-|
-|<strong>set_num</strong>|||||
-|<strong>llca8-1</strong>|1|1|1|1|
-|<strong>llca21-1</strong>|1|1|1|1|
-|<strong>fruit1-1</strong>|1|1|1|1|
-|<strong>MMMB026-1</strong>|1|1|1|1|
-|<strong>MMMB003-1</strong>|1|1|1|1|
-|<strong>…</strong>|…|…|…|…|
-|<strong>10021-1</strong>|1|1|1|1|
-|<strong>088-1</strong>|1|1|1|1|
-|<strong>080-1</strong>|2|2|2|2|
-|<strong>066-1</strong>|1|1|1|1|
-|<strong>00-4</strong>|1|1|1|1|
-468 rows × 4 columns</p>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>searching_for_set</th>
+      <th>set_name</th>
+      <th>part_name</th>
+      <th>num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>set_num</strong></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>llca8-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>llca21-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>fruit1-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>MMMB026-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>MMMB003-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>…</strong></td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td><strong>10021-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>088-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>080-1</strong></td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><strong>066-1</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><strong>00-4</strong></td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>Wow, that’s different! The aggregation function is applied to every column independently and the group is set as row index. 
 But it is also possible to define the aggregation function for each column explicitly like in SQL:</p>
@@ -1501,20 +1583,84 @@ But it is also possible to define the aggregation function for each column expli
          <span class="n">total_num_parts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">"num_parts"</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="s">"sum"</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p>|.|set_num|matches_per_set|total_num_parts|
-|-|-|-|-|
-|<strong>0</strong>|00-4|1|126|
-|<strong>1</strong>|066-1|1|407|
-|<strong>2</strong>|080-1|2|1420|
-|<strong>3</strong>|088-1|1|615|
-|<strong>4</strong>|10021-1|1|974|
-|<strong>…</strong>|…|…|…|
-|<strong>463</strong>|MMMB003-1|1|15|
-|<strong>464</strong>|MMMB026-1|1|43|
-|<strong>465</strong>|fruit1-1|1|8|
-|<strong>466</strong>|llca21-1|1|42|
-|<strong>467</strong>|llca8-1|1|58|
-468 rows × 3 columns</p>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>set_num</th>
+      <th>matches_per_set</th>
+      <th>total_num_parts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0</strong></td>
+      <td>00-4</td>
+      <td>1</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>066-1</td>
+      <td>1</td>
+      <td>407</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>080-1</td>
+      <td>2</td>
+      <td>1420</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>088-1</td>
+      <td>1</td>
+      <td>615</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td>10021-1</td>
+      <td>1</td>
+      <td>974</td>
+    </tr>
+    <tr>
+      <td><strong>…</strong></td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td><strong>463</strong></td>
+      <td>MMMB003-1</td>
+      <td>1</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td><strong>464</strong></td>
+      <td>MMMB026-1</td>
+      <td>1</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td><strong>465</strong></td>
+      <td>fruit1-1</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><strong>466</strong></td>
+      <td>llca21-1</td>
+      <td>1</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td><strong>467</strong></td>
+      <td>llca8-1</td>
+      <td>1</td>
+      <td>58</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>This looks more familiar. With the <code class="language-plaintext highlighter-rouge">as_index</code> argument the group becomes a column (rather than a row index).</p>
 
