@@ -720,7 +720,7 @@ df_sets_with_missing_parts.groupby(['set_num']).count()  .sort_values('set_num',
 
 
 
-|.|searching_for_set|set_name|part_name|num_parts|
+||searching_for_set|set_name|part_name|num_parts|
 |-|-|-|-|-|
 |**set_num**|||||
 |**llca8-1**|1|1|1|1|
@@ -734,8 +734,6 @@ df_sets_with_missing_parts.groupby(['set_num']).count()  .sort_values('set_num',
 |**080-1**|2|2|2|2|
 |**066-1**|1|1|1|1|
 |**00-4**|1|1|1|1|
-468 rows × 4 columns
-
 
 
 Wow, that's different! The aggregation function is applied to every column independently and the group is set as row index. 
@@ -751,7 +749,7 @@ df_sets_with_missing_parts.groupby(['set_num'], as_index = False) \
 
 
 
-|.|set_num|matches_per_set|total_num_parts|
+||set_num|matches_per_set|total_num_parts|
 |-|-|-|-|
 |**0**|00-4|1|126|
 |**1**|066-1|1|407|
@@ -764,7 +762,7 @@ df_sets_with_missing_parts.groupby(['set_num'], as_index = False) \
 |**465**|fruit1-1|1|8|
 |**466**|llca21-1|1|42|
 |**467**|llca8-1|1|58|
-468 rows × 3 columns
+
 
 
 
