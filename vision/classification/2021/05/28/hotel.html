@@ -96,44 +96,33 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#the-challenge">The challenge</a></li>
-<li class="toc-entry toc-h1"><a href="#training">Training</a></li>
-<li class="toc-entry toc-h1"><a href="#inference">Inference</a></li>
-<li class="toc-entry toc-h1"><a href="#inference-ensemble">Inference ensemble</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
-</ul><blockquote>
-  <p><em>“Recognizing a hotel from an image of a hotel room is important for human trafficking investigations. Images directly
+    <blockquote>
+  <p>“Recognizing a hotel from an image of a hotel room is important for human trafficking investigations. Images directly
 link victims to places and can help verify where victims have
-been trafficked.”</em> (Stylianou et al., 2019).</p>
+been trafficked.” (Stylianou et al., 2019).</p>
 </blockquote>
 
 <p>As part of the <a href="https://sites.google.com/view/fgvc8/home">Eight Workshop on Fine-Grained Visual Categorization</a> a kaggle competition was launched to support investigations by advancing models to identify hotels from images.</p>
 
 <p>This post contains some parts of my contribution to the <a href="https://www.kaggle.com/c/hotel-id-2021-fgvc8/overview">Hotel-ID to Combat Human Trafficking 2021 - FGVC8</a> kaggle competition.</p>
 
-<h1 id="the-challenge">
-<a class="anchor" href="#the-challenge" aria-hidden="true"><span class="octicon octicon-link"></span></a>The challenge</h1>
+<h1 id="the-challenge">The challenge</h1>
 <p>The competition contained 97000+ images of hotel rooms from 7700<strong>!</strong> different hotels around the world. The objective was to identify the hotels of 13000 images from the hidden test set. The metric of the competition was Mean Average Precission of the top 5 picks (MAP@5). My solution scored <strong>14th place</strong> out of 92 teams with a 0.6164 MAP@5 on the private leaderboard.</p>
 
 <p>My solution contained six CNN models with various configurations. More technical details and why I ended up with rather simple models is described in a kaggle <a href="https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030">discussion topic</a>.</p>
 
-<p>I’ll post here the training and inference of one of the six models as well as the ensemble inference code.</p>
+<p>Here I post the training and inference of one of the six models as well as the ensemble inference code.</p>
 
-<h1 id="training">
-<a class="anchor" href="#training" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training</h1>
+<h1 id="training">Training</h1>
 <iframe src="https://www.kaggle.com/embed/joatom/hotel-train-fastai-densnet161?kernelSessionId=63702072" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Hotel train (fastai + densnet161)"></iframe>
 
-<h1 id="inference">
-<a class="anchor" href="#inference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inference</h1>
-<iframe src="https://www.kaggle.com/embed/joatom/hotel-train-fastai-densnet161?kernelSessionId=63702072" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Hotel train (fastai + densnet161)"></iframe>
+<h1 id="inference">Inference</h1>
+<iframe src="https://www.kaggle.com/embed/joatom/hotel-inference-fastai?kernelSessionId=63761117" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Hotel inference (fastai)"></iframe>
 
-<h1 id="inference-ensemble">
-<a class="anchor" href="#inference-ensemble" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inference ensemble</h1>
+<h1 id="inference-ensemble">Inference ensemble</h1>
 <iframe src="https://www.kaggle.com/embed/joatom/fgvc8-hotel-ensemble-inference?kernelSessionId=63977973" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="fgvc8 - hotel ensemble (inference)"></iframe>
 
-<h1 id="references">
-<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h1>
+<h1 id="references">References</h1>
 
 <p>Stylianou, Abby and Xuan, Hong and Shende, Maya and Brandt, Jonathan and Souvenir, Richard and Pless, Robert (2019). Hotels-50K: A Global Hotel Recognition Dataset. <em>The AAAI Conference on Artificial Intelligence (AAAI)</em></p>
 
