@@ -107,13 +107,16 @@ been trafficked.” (Stylianou et al., 2019).</p>
 <p>This post contains some parts of my contribution to the <a href="https://www.kaggle.com/c/hotel-id-2021-fgvc8/overview">Hotel-ID to Combat Human Trafficking 2021 - FGVC8</a> kaggle competition.</p>
 
 <h1 id="the-challenge">The challenge</h1>
-<p>The competition contained 97000+ images of hotel rooms from 7700<strong>!</strong> different hotels around the world. The objective was to identify the hotels of 13000 images from the hidden test set. The metric of the competition was Mean Average Precission of the top 5 picks (MAP@5). My solution scored <strong>14th place</strong> out of 92 teams with a 0.6164 MAP@5 on the private leaderboard.</p>
+<p>The competition contained 97000+ images of hotel rooms from 7700<strong>!</strong> different hotels around the world. The objective was to identify the hotels of 13000 images from the hidden test set. The metric of the competition was Mean Average Precision of the top 5 picks (MAP@5). My solution scored <strong>14th place</strong> out of 92 teams with a 0.6164 MAP@5 on the private leaderboard.</p>
 
 <p>My solution contained six CNN models with various configurations. More technical details and why I ended up with rather simple models is described in a kaggle <a href="https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030">discussion topic</a>.</p>
 
 <p>Here I post the training and inference of one of the six models as well as the ensemble inference code.</p>
 
 <h1 id="training">Training</h1>
+<p>The final training was done on the entire train dataset. I didn’t choose a cross validation strategy to safe training time. To keep variance low nonetheless I relied on the usual regularization strategies, such as dropout and augmentation and in particular on test time augmentation during inference.</p>
+
+<p>To refine the model a validation set can be created by setting the <code class="language-plaintext highlighter-rouge">debug</code> flag as described in the notebook.</p>
 <iframe src="https://www.kaggle.com/embed/joatom/hotel-train-fastai-densnet161?kernelSessionId=63702072" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Hotel train (fastai + densnet161)"></iframe>
 
 <h1 id="inference">Inference</h1>
