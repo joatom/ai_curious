@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>I bought a fitbit, now I can watch my models train | AI curious</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="I bought a fitbit, now I can watch my models train" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A fun project to stream ML training progress to my watch" />
+<meta property="og:description" content="A fun project to stream ML training progress to my watch" />
+<link rel="canonical" href="https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/17/watchtrain.html" />
+<meta property="og:url" content="https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/17/watchtrain.html" />
+<meta property="og:site_name" content="AI curious" />
+<meta property="og:image" content="https://joatom.github.io/ai_curious/images/logo_watchtrain.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/17/watchtrain.html"},"url":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/17/watchtrain.html","@type":"BlogPosting","headline":"I bought a fitbit, now I can watch my models train","dateModified":"2021-06-17T00:00:00-05:00","datePublished":"2021-06-17T00:00:00-05:00","image":"https://joatom.github.io/ai_curious/images/logo_watchtrain.jpg","description":"A fun project to stream ML training progress to my watch","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/ai_curious/">AI curious</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/ai_curious/about/">About Me</a><a class="page-link" href="/ai_curious/search/">Search</a><a class="page-link" href="/ai_curious/categories/">Tags</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">I bought a fitbit, now I can watch my models train</h1>
+<p class="page-description">A fun project to stream ML training progress to my watch</p>
+<p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-06-17T00:00:00-05:00" itemprop="datePublished">
+        Jun 17, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i> 
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#API">API</a>
+         
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#WebSockets">WebSockets</a>
+         
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#ML%20Logging">ML Logging</a>
+         
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#Fastai%20Callbacks">Fastai Callbacks</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1">
+<a href="#user-story">User story</a>
+<ul>
+<li class="toc-entry toc-h2">
+<a href="#architecture">Architecture</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#api-server">API-Server</a></li>
+<li class="toc-entry toc-h3">
+<a href="#training">Training</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#fastai">Fastai</a></li>
+<li class="toc-entry toc-h4"><a href="#pytorch">Pytorch</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#watch">Watch</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#lessons-learned">Lessons learned</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#fastapi">FastAPI</a></li>
+<li class="toc-entry toc-h3"><a href="#websockets">Websockets</a></li>
+<li class="toc-entry toc-h3"><a href="#fitbit-sdk">Fitbit SDK</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p>During the Covid winter I hardly had any reason to leave the house. It was clear that I activly had to look after my mental and physical wellbeing. So, I decided to buy a smart watch and take on the 10000 steps per day challange. Henceforth I spent much more time outside in the sunlight moving my body.</p>
+
+<p>When I registered my new Fitbit my eyes got attracted by the <em><a href="https://dev.fitbit.com/">For Developers</a></em> link. As you might guess my thoughts started spinning like - <em>Aha, they are providing a SDK! I got to try this out at some point and build an app for the watch.</em> - I wanted this app to be related to ML or at least to data somehow. My first thought was - <em>Would it be possible to use the green heartrate sensor light as an OCR? - Naa, to complicated for a fun project.</em> - Then I went on with the registration of the watch on the webpage.</p>
+
+<p>Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-). A little bored, I thought of my ML-model that was training on <em><a href="https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html">Hotel Room classification</a></em> for a couple of hours upstairs in the office. I wanted to know how it was preceeding. Sneaking upstairs would result in half an hour infront of the computer, followed by some trouble with my wife <img class="emoji" title=":unamused:" alt=":unamused:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f612.png" height="20" width="20">. - <em>Mayby I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?</em> … <em>Or may be I now have a new fun project for my new watch <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> <img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20">!</em> -</p>
+
+<h1 id="user-story">
+<a class="anchor" href="#user-story" aria-hidden="true"><span class="octicon octicon-link"></span></a>User story</h1>
+
+<p>Those were the requirements that finaly got implemented:</p>
+<ul>
+  <li>Statistics (for metrics and losses) need to be captured during the training, so that I can see if training improves.</li>
+  <li>Progress of training needs to be captured and made available to the watch instantly, so that I can estimate how long the training will take to finish.</li>
+  <li>Stats &amp; progs should be processable in pytorch and fastai trainings, so that I can use my prefered ML libraries.</li>
+  <li>The watch plots the metrics history of the current training as line chart. so that I can quickly see if training improves on which metric.</li>
+  <li>The metrics values should be plotted, so I can easily compare with former trainings.</li>
+  <li>Progress on epochs and batches (train and valid) are plotted, so I can easily estimate how long the remainig training steps will last.</li>
+</ul>
+
+<p>As side by-product the training progress can also be displayed on a browser. This feature was build in parallel for debugging purpose.</p>
+
+<h2 id="architecture">
+<a class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h2>
+<h3 id="api-server">
+<a class="anchor" href="#api-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>API-Server</h3>
+<p>The requirements led to the architecture shown in the diagram. In the center of the application is an API-Server to coordinate the training and the watch. The <em>Training</em>, <em>Watch</em> and <em>Web</em> are client applications connected to the API-Server’s <em>Watchtrain-Topic</em>. The <em>Topic</em> contains a connection pool for the <em>Training</em> client (data <em>Producer</em>) and another connection pool for the <em>Web</em> and the <em>Watch</em> clients (data <em>Consumer</em>).</p>
+
+<p><img src="/ai_curious/images/watchtrain/arch.png" alt=""></p>
+
+<blockquote>
+  <p>The initial idea was to setup a classical Consumer/Producer (Pub/Sub) pattern. But it ended up a bit different. The Topic holds the data in an object rather than a queue-like state and also does some data processing. The Producer and Consumer can stil subscribe at any time, but they are also strongly connected via Websockets. I took the chance to play around with websockets, since it is also available on the watch.</p>
+</blockquote>
+
+<p>For each client type there is an <em>Agent</em> that processes the data and messages that are send from the clients. The stats and progress data is safed in the topic. The topic generates the metric chart that is send to the Consumers, since I couldn’t find a charts library in the watch SDK.</p>
+
+<p>The Topic-Consumer-Producer-Agent “pattern” with the connection pool handler is set up in a generic way so it’s easy to develop other applications in the same manner and run them on the API-Server.</p>
+
+<p>As API-Server I used FastApi which is easy to start with as shown  on the <a href="https://fastapi.tiangolo.com/tutorial/">tutorial site</a> or in <a href="https://www.youtube.com/watch?v=Mw9etoRz0Ic">this video</a>.</p>
+
+<p>The communications between the components is done with JSON. Messages start with an <em>action</em>-field followed by the <em>training_id</em> and a more or less complex payload. Depending of the <em>action</em> value different functionalities are triggered, such as sending the metric image to the client or converting batch informations into a progress bar.</p>
+
+<h3 id="training">
+<a class="anchor" href="#training" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training</h3>
+<h4 id="fastai">
+<a class="anchor" href="#fastai" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fastai</h4>
+<p>The easiest way to implement the train logging is by using the Fastai Callback infrastructur. So I built a <em>WebsocketLogger</em> which gets passt to the training like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">learn</span> <span class="o">=</span> <span class="n">cnn_learner</span><span class="p">(</span><span class="n">dls</span><span class="p">,</span> <span class="n">resnet18</span><span class="p">,</span> <span class="n">pretrained</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> 
+                                                                <span class="n">Recall</span><span class="p">(</span><span class="n">average</span><span class="o">=</span><span class="s">'macro'</span><span class="p">),</span> 
+                                                                <span class="n">Precision</span><span class="p">(</span><span class="n">average</span><span class="o">=</span><span class="s">'macro'</span><span class="p">)])</span>
+
+<span class="n">learn</span><span class="p">.</span><span class="n">unfreeze</span>
+<span class="n">learn</span><span class="p">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">lr_max</span> <span class="o">=</span> <span class="mf">5e-3</span><span class="p">,</span> <span class="n">cbs</span><span class="o">=</span><span class="p">[</span><span class="n">WebsocketLogger</span><span class="p">(</span><span class="s">'ws://myapiserver:8555/ws/watchtrain/producer/12345'</span><span class="p">)])</span>
+</code></pre></div></div>
+<p>Starting out by looking at the source code of the fastai build in <a href="https://github.com/fastai/fastai/blob/master/fastai/callback/progress.py">CSVLoggers and ProgressCallback</a> I learned how to track train data (metrics, epoch and batch progress). A bit challenging was the integration of the websocket client. I prefered a permanent connection rather than many one time (open-send-close) connections. Otherwise a simple REST call would have been more suitable. It is also very important that trainging must not break when the websocket connection is lost or the API-Server isn’t available anymore.</p>
+
+<p>That’s how it is implemented using the <a href="https://github.com/websocket-client/websocket-client">websocket-client</a> library:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span> <span class="p">...):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">conn</span>
+    <span class="p">...</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">heartbeat</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">_ws_connect</span><span class="p">()</span>
+    <span class="p">...</span>
+
+<span class="p">...</span>
+<span class="c1"># gets called when a websocket is opened
+</span><span class="k">def</span> <span class="nf">_on_ws_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ws</span><span class="p">):</span>
+    <span class="c1"># ws connection is now ready =&gt; unlock
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">ws_ready_lock</span><span class="p">.</span><span class="n">release</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">heartbeat</span> <span class="o">=</span> <span class="bp">True</span>
+    
+<span class="k">def</span> <span class="nf">_ws_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    
+    <span class="bp">self</span><span class="p">.</span><span class="n">heartbeat</span> <span class="o">=</span> <span class="bp">False</span>
+    
+    <span class="c1"># aquire lock until websocket is ready to use
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">ws_ready_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="p">.</span><span class="n">Lock</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">ws_ready_lock</span><span class="p">.</span><span class="n">acquire</span><span class="p">()</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">'Connecting websocket ...'</span><span class="p">)</span>
+    
+    <span class="bp">self</span><span class="p">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">websocket</span><span class="p">.</span><span class="n">WebSocketApp</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">conn</span><span class="p">,</span>
+                                      <span class="n">on_open</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_on_ws_open</span><span class="p">,</span>
+                                      <span class="n">on_message</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_on_ws_message</span><span class="p">,</span>
+                                      <span class="n">on_error</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_on_ws_error</span><span class="p">,</span>
+                                      <span class="n">on_close</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_on_ws_close</span><span class="p">)</span>
+
+    <span class="c1"># run websocket in background
+</span>    <span class="n">thread</span><span class="p">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">ws</span><span class="p">.</span><span class="n">run_forever</span><span class="p">,</span> <span class="p">())</span>
+    
+    <span class="c1"># wait for websocket to be initialized, 
+</span>    <span class="c1"># if connection is not possible (e.g. APIServer is down) resume after 3 sec, but heartbeat stays FALSE
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">ws_ready_lock</span><span class="p">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">'... websocket connected.'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The <em>WebSocketApp</em> runs as a local websocket-handler in the background. The <em>Locks</em> are used to make sure the connection gets properly established before the first messages are send. The <em>heartbeat</em> is introduced to keep the training running even if the websocket connection is broken and could not be reconnected via <em>WebSocketApp</em>. 
+After an epoche _ws_connect() is called again if there is no heartbeat anymore. If the API-Server is still not reachable the training continous after a 3 secound waitingtime.</p>
+
+<h4 id="pytorch">
+<a class="anchor" href="#pytorch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pytorch</h4>
+<p>I skipped the pytorch implementation until I need it. But it is straight forward. Start a WebSocketApp thread in the background. Send the data from inside of the training/validation/inference-loop.</p>
+
+<h3 id="watch">
+<a class="anchor" href="#watch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Watch</h3>
+
+<p><img src="/ai_curious/images/watchtrain/watch2.png" alt=""></p>
+
+<p>The layout is held pretty simple shown in the picture. There is a progress bar for the epochs and one for the mini batches (train and valid). In the center is the chart of the merics. And at the bottom are the latest metric values.
+The cell phone that belongs to the watch establish a websocket connection to the API-Server and EventListeners for incoming messages. The incomming messages are uploaded to the watch were they can be displayed.</p>
+
+<h2 id="lessons-learned">
+<a class="anchor" href="#lessons-learned" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lessons learned</h2>
+
+<h3 id="fastapi">
+<a class="anchor" href="#fastapi" aria-hidden="true"><span class="octicon octicon-link"></span></a>FastAPI</h3>
+<p>FastAPI is a well-documented and easy to use framework. In the beginning I set it up with HTTPS. There is a tutorial on how to setup <a href="https://traefik.io/resources/traefik-fastapi-kuberrnetes-ai-ml/">FastAPI with Traefik</a>.
+But since I wanted to run the server at home I had to invest some evenings to figure out, how to set it up by myself. I used <a href="https://github.com/FiloSottile/mkcert">mkcert</a> for SSL creation. A docker file to setup an FastAPI-Server at home can now be found <a href="https://github.com/joatom/dev-environments/tree/master/apiserver">here</a>. At the end when I got it working I decided to not use HTTPS for reasons discribed below, <img class="emoji" title=":man_shrugging:" alt=":man_shrugging:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png" height="20" width="20">.</p>
+
+<h3 id="websockets">
+<a class="anchor" href="#websockets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Websockets</h3>
+<p>The different components communicate instantly. The data is pushed to the watch, which is the prefered behaviour on the recieving site. With the websocket on the training site it  is a bit more complicated to be fail safe and pickup communiction when the connection is brocken for a longer period of time. I might switch this part to a simple REST-post in a later version. But this way it was a fun excersice nevertheless.</p>
+
+<h3 id="fitbit-sdk">
+<a class="anchor" href="#fitbit-sdk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fitbit SDK</h3>
+<p>The Fitbit SDK is nice. They provide an online IDE which can easily be connected to your devices. The SDK is documented with a few examples. They also host helpfull forum.</p>
+
+<p>I had a bit of a hard time when I tried to load and display the Metrics chart image to the watch. I had to figure out that there are two types of jpeg, progressiv and basic. And only one worked. It also was hard to figure out that the the image needs to have a certain size to be displayed. But that’s part of the normal learning path with a new technology.</p>
+
+<p>And than, there was this one thing that really upset me (But as fare as I read in forums it is not the Fitbit SDKs fault!). Android doesn’t allow regular HTTP connection through apps. That’s why I setup the API-Server with HTTPS. But since I generated the certificate on my own, it wasn’t a trusted source and therefore Android didn’t accept it. Then I found some post that showed how to access HTTP from a local net, but only for IP range 192.168.0.x. That meant either building a Reverse Proxy or changing the Subnet of my network. And then finally I needed to deal with the docker net-adresse where the API-Server is running. As suspected, one evening I freaked out - <em>?#@!, I just want to send a JSON to my cell phone! 30 years of web-developent and all we ended up is JavaScript and SSL-certs @!#</em> - That was a good time to go to bed, put the project aside for a few days and celecbrate that most of the time I’m into data instead of gui <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+
+<p>Besides that I really enjoyed it to build a nice app for my Fitbit.</p>
+
+<h2 id="conclusion">
+<a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h2>
+
+<h2 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+
+
+  </div>
+<!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js" repo="joatom/ai_curious" issue-term="title" label="blogpost-comment" theme="github-light" crossorigin="anonymous" async>
+</script><a class="u-url" href="/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/17/watchtrain.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ai_curious/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ai_curious/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ai_curious/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Personal blog</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+<li><a rel="me" href="https://github.com/joatom" title="joatom"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#github"></use></svg></a></li>
+<li><a rel="me" href="https://twitter.com/johannestomason" title="johannestomason"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
