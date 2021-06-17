@@ -5,11 +5,11 @@ layout: post
 comments: true
 description: How to translate a German blog post to English.
 categories: [NLP]
-image: images/logo_blog_translator.jpg
+image: images/logo_blog_translator.png
 title: Blog-Beiträge automatisch übersetzen
 ---
 
-[:de:](https://joatom.github.io/ai_curious/nlp/2020/12/26/blog-translator_de.html) [:us:](https://joatom.github.io/ai_curious/nlp/2020/12/26/blog-translator.html)
+[:de:](https://joatom.github.io/ai_curious/nlp/2020/12/26/blog-translator-de.html) [:us:](https://joatom.github.io/ai_curious/nlp/2020/12/26/blog-translator.html)
 
 > Achtung! Dieser Text wurde automatisch übersetzt!
 
