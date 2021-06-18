@@ -5,19 +5,19 @@ layout: post
 comments: true
 description: A fun project to stream ML training progress to my watch
 categories: [API, WebSockets, ML Logging, Fastai Callbacks]
-image: images/logo_watchtrain.jpg
+image: images/logo_watchtrain1.jpg
 title: I bought a fitbit, now I can watch my models train
 ---
 
 During the Covid winter I hardly had any reason to leave the house. It was clear that I activly had to look after my mental and physical wellbeing. So, I decided to buy a smart watch and take on the 10000 steps per day challange. Henceforth I spent much more time outside in the sunlight moving my body.
 
-When I registered my new Fitbit my eyes got attracted by the *[For Developers](https://dev.fitbit.com/)* link. As you might guess my thoughts started spinning like - *Aha, they are providing a SDK! I got to try this out at some point and build an app for the watch.* - I wanted this app to be related to ML or at least to data somehow. My first thought was - *Would it be possible to use the green heartrate sensor light as an OCR? - Naa, to complicated for a fun project.* - Then I went on with the registration of the watch on the webpage.
+When I registered my new Fitbit I instantly got attracted by the *[For Developers](https://dev.fitbit.com/)* link. As you might guess my thoughts started spinning like - *Aha, they are providing a SDK! I got to try this out at some point and build an app for the watch.* - I wanted this app to be related to ML or atleast to data somehow. My first thought was - *Would it be possible to use the green heartrate sensor light as an OCR? - Naa, to complicated for a fun project.* - Then I went on with the registration of the watch on the webpage.
 
-Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-). A little bored, I thought of my ML-model that was training on *[Hotel Room classification](https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html)* for a couple of hours upstairs in the office. I wanted to know how it was preceeding. Sneaking upstairs would result in half an hour infront of the computer, followed by some trouble with my wife :unamused:. - *Mayby I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?* ... *Or may be I now have a new fun project for my new watch :smile: :bulb:!* -
+Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-)). A little bored, I thought of my ML-model that was training on *[Hotel Room classification](https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html)* for a couple of hours upstairs in the office. I wanted to know how it was preceeding. Sneaking upstairs would result in half an hour infront of the computer, followed by some trouble with my wife :unamused:. - *Mayby I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?* ... *Or may be I now have a new fun project for my new watch :smile: :bulb:!* -
 
 # User story
 
-Those were the requirements that finaly got implemented:
+Those were the requirements that finally got implemented:
 - Statistics (for metrics and losses) need to be captured during the training, so that I can see if training improves.
 - Progress of training needs to be captured and made available to the watch instantly, so that I can estimate how long the training will take to finish.
 - Stats & progs should be processable in pytorch and fastai trainings, so that I can use my prefered ML libraries.
@@ -27,8 +27,8 @@ Those were the requirements that finaly got implemented:
 
 As side by-product the training progress can also be displayed on a browser. This feature was build in parallel for debugging purpose.
 
-## Architecture
-### API-Server
+# Architecture
+## API-Server
 The requirements led to the architecture shown in the diagram. In the center of the application is an API-Server to coordinate the training and the watch. The *Training*, *Watch* and *Web* are client applications connected to the API-Server's *Watchtrain-Topic*. The *Topic* contains a connection pool for the *Training* client (data *Producer*) and another connection pool for the *Web* and the *Watch* clients (data *Consumer*). 
 
 ![]({{ site.baseurl }}/images/watchtrain/arch.png)
@@ -43,8 +43,8 @@ As API-Server I used FastApi which is easy to start with as shown  on the [tutor
 
 The communications between the components is done with JSON. Messages start with an *action*-field followed by the *training_id* and a more or less complex payload. Depending of the *action* value different functionalities are triggered, such as sending the metric image to the client or converting batch informations into a progress bar.
 
-### Training
-#### Fastai
+## Training
+### Fastai
 The easiest way to implement the train logging is by using the Fastai Callback infrastructur. So I built a *WebsocketLogger* which gets passt to the training like this:
 
 ```python
@@ -55,7 +55,7 @@ learn = cnn_learner(dls, resnet18, pretrained = False, metrics=[accuracy,
 learn.unfreeze
 learn.fit_one_cycle(10, lr_max = 5e-3, cbs=[WebsocketLogger('ws://myapiserver:8555/ws/watchtrain/producer/12345')])
 ```
-Starting out by looking at the source code of the fastai build in [CSVLoggers and ProgressCallback](https://github.com/fastai/fastai/blob/master/fastai/callback/progress.py) I learned how to track train data (metrics, epoch and batch progress). A bit challenging was the integration of the websocket client. I prefered a permanent connection rather than many one time (open-send-close) connections. Otherwise a simple REST call would have been more suitable. It is also very important that trainging must not break when the websocket connection is lost or the API-Server isn't available anymore.
+Starting out by looking at the source code of the fastai build-in [CSVLoggers and ProgressCallback](https://github.com/fastai/fastai/blob/master/fastai/callback/progress.py) I learned how to track train data (metrics, epoch and batch progress). A bit challenging was the integration of the websocket client. I prefered a permanent connection rather than many one time (open-send-close) connections. Otherwise a simple REST call would have been more suitable. It is also very important that training must not break when the websocket connection is lost or the API-Server isn't available anymore.
 
 That's how it is implemented using the [websocket-client](https://github.com/websocket-client/websocket-client) library:
 
@@ -102,29 +102,30 @@ def _ws_connect(self):
 ```
 
 The *WebSocketApp* runs as a local websocket-handler in the background. The *Locks* are used to make sure the connection gets properly established before the first messages are send. The *heartbeat* is introduced to keep the training running even if the websocket connection is broken and could not be reconnected via *WebSocketApp*. 
-After an epoche \_ws_connect() is called again if there is no heartbeat anymore. If the API-Server is still not reachable the training continous after a 3 secound waitingtime.
 
-#### Pytorch
+If there is no heartbeat anymore \_ws_connect() is called again after any epoch. If the API-Server is still not reachable the training continous after a 3 secound waitingtime.
+
+### Pytorch
 I skipped the pytorch implementation until I need it. But it is straight forward. Start a WebSocketApp thread in the background. Send the data from inside of the training/validation/inference-loop.
 
-### Watch
+## Watch
 
 ![]({{ site.baseurl }}/images/watchtrain/watch2.png)
 
-The layout is held pretty simple shown in the picture. There is a progress bar for the epochs and one for the mini batches (train and valid). In the center is the chart of the merics. And at the bottom are the latest metric values.
-The cell phone that belongs to the watch establish a websocket connection to the API-Server and EventListeners for incoming messages. The incomming messages are uploaded to the watch were they can be displayed.
+The layout is held pretty simple as shown in the picture. There is a progress bar for the epochs and one for the mini batches (train and valid). In the center is the chart of the merics. And at the bottom are the latest metric values.
+The cell phone that belongs to the watch establish a websocket connection to the API-Server and puts *EventListeners* for incoming messages into place. The incomming messages are uploaded to the watch were they can be displayed.
 
 
-## Lessons learned
+# Lessons learned
 
-### FastAPI
+## FastAPI
 FastAPI is a well-documented and easy to use framework. In the beginning I set it up with HTTPS. There is a tutorial on how to setup [FastAPI with Traefik](https://traefik.io/resources/traefik-fastapi-kuberrnetes-ai-ml/).
 But since I wanted to run the server at home I had to invest some evenings to figure out, how to set it up by myself. I used [mkcert](https://github.com/FiloSottile/mkcert) for SSL creation. A docker file to setup an FastAPI-Server at home can now be found [here](https://github.com/joatom/dev-environments/tree/master/apiserver). At the end when I got it working I decided to not use HTTPS for reasons discribed below, :man_shrugging:.
 
-### Websockets
+## Websockets
 The different components communicate instantly. The data is pushed to the watch, which is the prefered behaviour on the recieving site. With the websocket on the training site it  is a bit more complicated to be fail safe and pickup communiction when the connection is brocken for a longer period of time. I might switch this part to a simple REST-post in a later version. But this way it was a fun excersice nevertheless.
 
-### Fitbit SDK
+## Fitbit SDK
 The Fitbit SDK is nice. They provide an online IDE which can easily be connected to your devices. The SDK is documented with a few examples. They also host helpfull forum.
 
 I had a bit of a hard time when I tried to load and display the Metrics chart image to the watch. I had to figure out that there are two types of jpeg, progressiv and basic. And only one worked. It also was hard to figure out that the the image needs to have a certain size to be displayed. But that's part of the normal learning path with a new technology.
@@ -134,7 +135,7 @@ And than, there was this one thing that really upset me (But as fare as I read i
 Besides that I really enjoyed it to build a nice app for my Fitbit.
 
 
-## Conclusion
+# Conclusion
 
-## References
+# References
 
