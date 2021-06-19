@@ -13,11 +13,11 @@
 <link rel="canonical" href="https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html" />
 <meta property="og:url" content="https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html" />
 <meta property="og:site_name" content="AI curious" />
-<meta property="og:image" content="https://joatom.github.io/ai_curious/images/logo_watchtrain1.png" />
+<meta property="og:image" content="https://joatom.github.io/ai_curious/images/logo_watchtrain2.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-06-19T00:00:00-05:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html"},"url":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html","@type":"BlogPosting","headline":"Stream ML training progress to a smart watch","dateModified":"2021-06-19T00:00:00-05:00","datePublished":"2021-06-19T00:00:00-05:00","image":"https://joatom.github.io/ai_curious/images/logo_watchtrain1.png","description":"I bought a Fitbit, now I can watch my models train!","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html"},"url":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html","@type":"BlogPosting","headline":"Stream ML training progress to a smart watch","dateModified":"2021-06-19T00:00:00-05:00","datePublished":"2021-06-19T00:00:00-05:00","image":"https://joatom.github.io/ai_curious/images/logo_watchtrain2.png","description":"I bought a Fitbit, now I can watch my models train!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -149,8 +149,6 @@ window.onload = wrap_img;
 
 <p>Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-)). A little bored, I thought of my ML-model that was training on <em><a href="https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html">Hotel Room classification</a></em> for a couple of hours upstairs in the office. I wanted to know how it was preceding. Sneaking upstairs would result in half an hour in front of the computer, followed by some trouble with my wife <img class="emoji" title=":unamused:" alt=":unamused:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f612.png" height="20" width="20">. - <em>May by I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?</em> … <em>Or may be I now have a new fun project for my new watch <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> <img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20">!</em> -</p>
 
-<p align="center"><img class="emoji" title=":sun_with_face:" alt=":sun_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31e.png" height="20" width="20"></p>
-
 <h1 id="user-story">
 <a class="anchor" href="#user-story" aria-hidden="true"><span class="octicon octicon-link"></span></a>User story</h1>
 
@@ -255,7 +253,7 @@ window.onload = wrap_img;
 <h2 id="watch">
 <a class="anchor" href="#watch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Watch</h2>
 
-<p><img src="/ai_curious/images/watchtrain/watch2.png" alt=""></p>
+<p><img src="/ai_curious/images/watchtrain/watch1.png" alt=""></p>
 
 <p>The layout is held pretty simple as shown in the picture. There is a progress bar for the epochs and one for the mini batches (train and valid). In the center is the chart of the metrics. And at the bottom are the latest metric values.
 The cell phone that belongs to the watch establish a websocket connection to the API-Server and puts <em>EventListeners</em> for incoming messages into place. The incoming messages are uploaded to the watch were they can be displayed.</p>
