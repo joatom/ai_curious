@@ -4,20 +4,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>I bought a fitbit, now I can watch my models train | AI curious</title>
+<title>Stream ML training progress to a smart watch | AI curious</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="I bought a fitbit, now I can watch my models train" />
+<meta property="og:title" content="Stream ML training progress to a smart watch" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A fun project to stream ML training progress to my watch" />
-<meta property="og:description" content="A fun project to stream ML training progress to my watch" />
+<meta name="description" content="I bought a Fitbit, now I can watch my models train!" />
+<meta property="og:description" content="I bought a Fitbit, now I can watch my models train!" />
 <link rel="canonical" href="https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html" />
 <meta property="og:url" content="https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html" />
 <meta property="og:site_name" content="AI curious" />
-<meta property="og:image" content="https://joatom.github.io/ai_curious/images/logo_watchtrain1.jpg" />
+<meta property="og:image" content="https://joatom.github.io/ai_curious/images/logo_watchtrain1.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-06-19T00:00:00-05:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html"},"url":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html","@type":"BlogPosting","headline":"I bought a fitbit, now I can watch my models train","dateModified":"2021-06-19T00:00:00-05:00","datePublished":"2021-06-19T00:00:00-05:00","image":"https://joatom.github.io/ai_curious/images/logo_watchtrain1.jpg","description":"A fun project to stream ML training progress to my watch","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html"},"url":"https://joatom.github.io/ai_curious/api/websockets/ml%20logging/fastai%20callbacks/2021/06/19/watchtrain.html","@type":"BlogPosting","headline":"Stream ML training progress to a smart watch","dateModified":"2021-06-19T00:00:00-05:00","datePublished":"2021-06-19T00:00:00-05:00","image":"https://joatom.github.io/ai_curious/images/logo_watchtrain1.png","description":"I bought a Fitbit, now I can watch my models train!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -76,8 +76,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">I bought a fitbit, now I can watch my models train</h1>
-<p class="page-description">A fun project to stream ML training progress to my watch</p>
+    <h1 class="post-title p-name" itemprop="name headline">Stream ML training progress to a smart watch</h1>
+<p class="page-description">I bought a Fitbit, now I can watch my models train!</p>
 <p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-06-19T00:00:00-05:00" itemprop="datePublished">
         Jun 19, 2021
       </time>
@@ -135,21 +135,21 @@ window.onload = wrap_img;
 </li>
 <li class="toc-entry toc-h1"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h1"><a href="#implementation">Implementation</a></li>
-<li class="toc-entry toc-h1">
-<a href="#references">References</a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#fitbit-sdk-1">Fitbit SDK</a></li>
-<li class="toc-entry toc-h2"><a href="#fastapi-1">FastAPI</a></li>
-<li class="toc-entry toc-h2"><a href="#training-1">Training</a></li>
-<li class="toc-entry toc-h2"><a href="#others">Others</a></li>
+<li class="toc-entry toc-h1"><a href="#references">References</a></li>
 </ul>
-</li>
-</ul>
-<p>During the Covid winter I hardly had any reason to leave the house. It was clear that I actively had to look after my mental and physical well-being. So, I decided to buy a smart watch and take on the 10000 steps per day challenge. Henceforth I spent much more time outside in the sunlight moving my body.</p>
+<p align="center"><img class="emoji" title=":mountain_snow:" alt=":mountain_snow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d4.png" height="20" width="20"></p>
+
+<p>During the Covid winter I hardly had any reason to leave the house. It was clear that I actively had to look after my mental and physical well-being. So, I decided to buy a smart watch (Fitbit Versa 3) and take on the 10000 steps per day challenge. Henceforth I spent much more time outside and in the sunlight moving my body.</p>
+
+<p align="center"><img class="emoji" title=":partly_sunny:" alt=":partly_sunny:" src="https://github.githubassets.com/images/icons/emoji/unicode/26c5.png" height="20" width="20"></p>
 
 <p>When I registered my new Fitbit I instantly got attracted by the <em><a href="https://dev.fitbit.com/">For Developers</a></em> link. As you might guess my thoughts started spinning like - <em>Aha, they are providing a SDK! I got to try this out at some point and build an app for the watch.</em> - I wanted this app to be related to ML or at least to data somehow. My first thought was - <em>Would it be possible to use the green heart-rate sensor light as an OCR? - Nope, to complicated for a fun project.</em> - Then I went on with the registration of the watch on the webpage.</p>
 
+<p align="center"><img class="emoji" title=":sun_behind_small_cloud:" alt=":sun_behind_small_cloud:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f324.png" height="20" width="20"></p>
+
 <p>Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-)). A little bored, I thought of my ML-model that was training on <em><a href="https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html">Hotel Room classification</a></em> for a couple of hours upstairs in the office. I wanted to know how it was preceding. Sneaking upstairs would result in half an hour in front of the computer, followed by some trouble with my wife <img class="emoji" title=":unamused:" alt=":unamused:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f612.png" height="20" width="20">. - <em>May by I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?</em> … <em>Or may be I now have a new fun project for my new watch <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> <img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20">!</em> -</p>
+
+<p align="center"><img class="emoji" title=":sun_with_face:" alt=":sun_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31e.png" height="20" width="20"></p>
 
 <h1 id="user-story">
 <a class="anchor" href="#user-story" aria-hidden="true"><span class="octicon octicon-link"></span></a>User story</h1>
@@ -164,7 +164,7 @@ window.onload = wrap_img;
   <li>Progress on epochs and batches (train and valid) are plotted, so I can easily estimate how long the remaining training steps will last.</li>
 </ul>
 
-<p>As side by-product the training progress can also be displayed on a browser. This feature was build in parallel for debugging purpose.</p>
+<p>As by-product the training progress can also be displayed on a browser. This feature was build in parallel for debugging purpose.</p>
 
 <h1 id="architecture">
 <a class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h1>
@@ -296,16 +296,14 @@ But since I wanted to run the server at home I had to invest some evenings to fi
 
 <p>Here is a list of my inspirations, templates and useful content listed by topic.</p>
 
-<h2 id="fitbit-sdk-1">
-<a class="anchor" href="#fitbit-sdk-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fitbit SDK</h2>
+<p><strong>Fitbit SDK</strong></p>
 <ul>
   <li>
 <a href="https://studio.fitbit.com/">Online IDE</a> (there also is a CLI version for VScode)</li>
   <li><a href="https://dev.fitbit.com/build/guides/">Tutorials</a></li>
 </ul>
 
-<h2 id="fastapi-1">
-<a class="anchor" href="#fastapi-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>FastAPI</h2>
+<p><strong>FastAPI</strong></p>
 <ul>
   <li><a href="https://fastapi.tiangolo.com/tutorial/">FastAPI’s tutorials</a></li>
   <li><a href="https://fastapi.tiangolo.com/advanced/websockets/">FastAPI and websockets</a></li>
@@ -315,15 +313,13 @@ But since I wanted to run the server at home I had to invest some evenings to fi
 <a href="https://www.youtube.com/watch?v=Mw9etoRz0Ic">Video Tutorial</a> for using FastAPI to serve ML models</li>
 </ul>
 
-<h2 id="training-1">
-<a class="anchor" href="#training-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training</h2>
+<p><strong>Training</strong></p>
 <ul>
   <li><a href="https://docs.fast.ai/tutorial.datablock.html#Image-classification">Fastai’s Datablock tutorial</a></li>
   <li><a href="https://docs.fast.ai/callback.progress.html">CSV and Progress logger</a></li>
 </ul>
 
-<h2 id="others">
-<a class="anchor" href="#others" aria-hidden="true"><span class="octicon octicon-link"></span></a>Others</h2>
+<p><strong>Others</strong></p>
 <ul>
   <li><a href="https://www.uvicorn.org/deployment/#running-with-https">Uvicorn HTTPS options</a></li>
   <li><a href="https://github.com/FiloSottile/mkcert">Mkcert installation guide</a></li>
