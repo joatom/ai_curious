@@ -5,7 +5,7 @@ comments: true
 description:  I bought a Fitbit, now I can watch my models train!
 categories: [API, WebSockets, ML Logging, Fastai Callbacks]
 image: images/logo_watchtrain2.png
-title: Stream ML training progress to a smart watch
+title: Streaming ML training progress to a smart watch
 ---
 
 <p align="center">:mountain_snow:</p>
