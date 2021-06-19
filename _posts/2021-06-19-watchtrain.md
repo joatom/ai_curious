@@ -4,7 +4,7 @@ layout: post
 comments: true
 description:  I bought a Fitbit, now I can watch my models train!
 categories: [API, WebSockets, ML Logging, Fastai Callbacks]
-image: images/logo_watchtrain1.png
+image: images/logo_watchtrain2.png
 title: Stream ML training progress to a smart watch
 ---
 
@@ -20,7 +20,6 @@ When I registered my new Fitbit I instantly got attracted by the *[For Developer
 
 Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-)). A little bored, I thought of my ML-model that was training on *[Hotel Room classification](https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html)* for a couple of hours upstairs in the office. I wanted to know how it was preceding. Sneaking upstairs would result in half an hour in front of the computer, followed by some trouble with my wife :unamused:. - *May by I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?* ... *Or may be I now have a new fun project for my new watch :smile: :bulb:!* -
 
-<p align="center">:sun_with_face:</p>
 
 # User story
 
@@ -117,7 +116,7 @@ I skipped the pytorch implementation until I need it. But it is straight forward
 
 ## Watch
 
-![]({{ site.baseurl }}/images/watchtrain/watch2.png)
+![]({{ site.baseurl }}/images/watchtrain/watch1.png)
 
 The layout is held pretty simple as shown in the picture. There is a progress bar for the epochs and one for the mini batches (train and valid). In the center is the chart of the metrics. And at the bottom are the latest metric values.
 The cell phone that belongs to the watch establish a websocket connection to the API-Server and puts *EventListeners* for incoming messages into place. The incoming messages are uploaded to the watch were they can be displayed.
