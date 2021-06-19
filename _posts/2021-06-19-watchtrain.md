@@ -2,17 +2,25 @@
 toc: true
 layout: post
 comments: true
-description: A fun project to stream ML training progress to my watch
+description:  I bought a Fitbit, now I can watch my models train!
 categories: [API, WebSockets, ML Logging, Fastai Callbacks]
-image: images/logo_watchtrain1.jpg
-title: I bought a fitbit, now I can watch my models train
+image: images/logo_watchtrain1.png
+title: Stream ML training progress to a smart watch
 ---
 
-During the Covid winter I hardly had any reason to leave the house. It was clear that I actively had to look after my mental and physical well-being. So, I decided to buy a smart watch and take on the 10000 steps per day challenge. Henceforth I spent much more time outside in the sunlight moving my body.
+<p align="center">:mountain_snow:</p>
+
+During the Covid winter I hardly had any reason to leave the house. It was clear that I actively had to look after my mental and physical well-being. So, I decided to buy a smart watch (Fitbit Versa 3) and take on the 10000 steps per day challenge. Henceforth I spent much more time outside and in the sunlight moving my body.
+
+<p align="center">:partly_sunny:</p>
 
 When I registered my new Fitbit I instantly got attracted by the *[For Developers](https://dev.fitbit.com/)* link. As you might guess my thoughts started spinning like - *Aha, they are providing a SDK! I got to try this out at some point and build an app for the watch.* - I wanted this app to be related to ML or at least to data somehow. My first thought was - *Would it be possible to use the green heart-rate sensor light as an OCR? - Nope, to complicated for a fun project.* - Then I went on with the registration of the watch on the webpage.
 
+<p align="center">:sun_behind_small_cloud:</p>
+
 Some month later, on a usual Sunday, I lay resting on the couch after lunch while the kids and my wife were cleaning the table and kitchen (I did the cooking ;-)). A little bored, I thought of my ML-model that was training on *[Hotel Room classification](https://joatom.github.io/ai_curious/vision/classification/2021/05/28/hotel.html)* for a couple of hours upstairs in the office. I wanted to know how it was preceding. Sneaking upstairs would result in half an hour in front of the computer, followed by some trouble with my wife :unamused:. - *May by I should eventually register at Neptune.ai or wandb.ai, then I could preview my trainings from the couch on my cell phone!?* ... *Or may be I now have a new fun project for my new watch :smile: :bulb:!* -
+
+<p align="center">:sun_with_face:</p>
 
 # User story
 
@@ -24,7 +32,7 @@ Those were the requirements that finally got implemented:
 - The metrics values should be plotted, so I can easily compare with former trainings.
 - Progress on epochs and batches (train and valid) are plotted, so I can easily estimate how long the remaining training steps will last.
 
-As side by-product the training progress can also be displayed on a browser. This feature was build in parallel for debugging purpose.
+As by-product the training progress can also be displayed on a browser. This feature was build in parallel for debugging purpose.
 
 # Architecture
 ## API-Server
@@ -144,21 +152,21 @@ The code for this project can be found in this repository: https://github.com/jo
 
 Here is a list of my inspirations, templates and useful content listed by topic.
 
-## Fitbit SDK
+**Fitbit SDK**
 - [Online IDE](https://studio.fitbit.com/) (there also is a CLI version for VScode)
 - [Tutorials](https://dev.fitbit.com/build/guides/)
 
-## FastAPI
+**FastAPI**
 - [FastAPI's tutorials](https://fastapi.tiangolo.com/tutorial/)
 - [FastAPI and websockets](https://fastapi.tiangolo.com/advanced/websockets/)
 - [Docker setup](https://fastapi.tiangolo.com/deployment/docker/)
 - [FastAPI with Traefik](https://traefik.io/resources/traefik-fastapi-kuberrnetes-ai-ml/)
 - [Video Tutorial](https://www.youtube.com/watch?v=Mw9etoRz0Ic) for using FastAPI to serve ML models
 
-## Training
+**Training**
 - [Fastai's Datablock tutorial](https://docs.fast.ai/tutorial.datablock.html#Image-classification)
 - [CSV and Progress logger](https://docs.fast.ai/callback.progress.html)
 
-## Others
+**Others**
 - [Uvicorn HTTPS options](https://www.uvicorn.org/deployment/#running-with-https)
 - [Mkcert installation guide](https://github.com/FiloSottile/mkcert)
