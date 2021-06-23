@@ -2,13 +2,13 @@
 toc: false
 layout: post
 comments: true
-description: kaggle **1st Place** solution of category "BigQuery ML Models built in SQL"
+description: My kaggle **1st Place** solution of category "BigQuery ML Models built in SQL"
 categories: [SQL, BigQuery]
 image: images/logo_bqml.png
 title: BigQuery-Geotab Intersection Congestion
 ---
 
-This blog post contains some of my codings for the 2019 kaggle BigQuery Geotab competition (https://www.kaggle.com/c/bigquery-geotab-intersection-congestion).
+This blog post contains some of my codings for the 2019 kaggle [BigQuery-Geotab competition](https://www.kaggle.com/c/bigquery-geotab-intersection-congestion).
 
 My submission scored **[1st Place](https://www.kaggle.com/c/bigquery-geotab-intersection-congestion/discussion/121504#709650)** on the categorie *BigQuery ML Models built in SQL*.
 
