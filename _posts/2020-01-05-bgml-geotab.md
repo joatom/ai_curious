@@ -10,7 +10,7 @@ title: BigQuery-Geotab Intersection Congestion
 
 This blog post contains some of my codings for the 2019 kaggle [BigQuery-Geotab competition](https://www.kaggle.com/c/bigquery-geotab-intersection-congestion).
 
-My submission scored **[1st Place](https://www.kaggle.com/c/bigquery-geotab-intersection-congestion/discussion/121504#709650)** on the categorie *BigQuery ML Models built in SQL*.
+My submission scored **[1st Place](https://www.kaggle.com/c/bigquery-geotab-intersection-congestion/discussion/121504#709650)** in the categorie *BigQuery ML Models built in SQL*.
 
 The challange was to predict six measures for cars approaching intersections in four US cities.
 
