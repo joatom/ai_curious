@@ -3,7 +3,7 @@ toc: false
 layout: post
 comments: true
 description: kaggle **1st Place** solution of category "BigQuery ML Models built in SQL"
-categories: [Basics]
+categories: [SQL, BigQuery]
 image: images/logo_bqml.png
 title: BigQuery-Geotab Intersection Congestion
 ---
