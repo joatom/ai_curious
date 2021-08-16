@@ -81,7 +81,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      15 min read
+      13 min read
     
 </span></p>
 
@@ -129,12 +129,14 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>Info:This notebook was originally published on <a href="https://www.kaggle.com/joatom/model-allocation">https://www.kaggle.com/joatom/model-allocation</a>.
-In this notebook I experiment with two ensembling strategies.</p>
-</blockquote>
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>This notebook was originally published on <a href="https://www.kaggle.com/joatom/model-allocation">https://www.kaggle.com/joatom/model-allocation</a>.
+</div>
+In this notebook I experiment with two ensembling strategies.
 <p>There are many ways to combine different models to improve result of predictions. A common technique for regression tasks is taking a weighted average of the model predictions (<code>y_pred = (m1(x)*w1 + ... + mn(x)*wn) / n</code>). Another common technique is building a meta model, that is trained on the models' outputs.</p>
-<p>The first chapter starts with a simple linear combination of to models. With a simple example it can be shown, why ensembling actually works. This knowledge will lead, in the second chapter, to the first technique on how to choose weights for a linear ensemble. In the third chapter an alternative for the weight selection is examined. This second technique is inspired by portfolio theory (a theory to combine financial assets). In the fourth chapter the two techniques are applied and compared on the (TPS August 2021)[<a href="https://www.kaggle.com/c/tabular-playground-series-aug-2021">https://www.kaggle.com/c/tabular-playground-series-aug-2021</a>] competition.</p>
+<p>The first chapter starts with a simple linear combination of two models. With a simple example it can be shown, why ensembling actually works. This knowledge will lead, in the second chapter, to the first technique on how to choose weights for a linear ensemble. In the third chapter an alternative for the weight selection is examined. This second technique is inspired by portfolio theory (a theory to combine financial assets). In the fourth chapter the two techniques are applied and compared on the  <a href="https://www.kaggle.com/c/tabular-playground-series-aug-2021">TPS August 2021</a> competition.</p>
 <blockquote>
 <p>For the ease of explanation I do some simplifying assumptions, such as equal distribution of the data, same distribution on unseen data, ... (just think of a vanilla world).</p>
 </blockquote>
@@ -694,7 +696,7 @@ Can we do this despite we are looking at a time-series in the financial example?
 <h1 id="4.-Ensembling-TPS-Aug-2021">
 <a class="anchor" href="#4.-Ensembling-TPS-Aug-2021" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Ensembling TPS Aug 2021<a class="anchor-link" href="#4.-Ensembling-TPS-Aug-2021"> </a>
 </h1>
-<p>Now that we have to techniques to ensemble, let's try them on the TPS August 2021 data.</p>
+<p>Now that we have to techniques to ensemble, let's try them on the <a href="https://www.kaggle.com/c/tabular-playground-series-aug-2021/overview">TPS August 2021</a> data.</p>
 <p>We do a 7 kfold split and calculate the residuals on the out-of-fold-predictions, that are used for validation. We train 7 regression models with different architecture so we get some diversity.</p>
 
 </div>
@@ -1279,347 +1281,6 @@ Total rmse: 7.89912
 </div>
     
 
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>f0</th>
-      <th>f1</th>
-      <th>f2</th>
-      <th>f3</th>
-      <th>f4</th>
-      <th>f5</th>
-      <th>f6</th>
-      <th>f7</th>
-      <th>f8</th>
-      <th>...</th>
-      <th>f97</th>
-      <th>f98</th>
-      <th>f99</th>
-      <th>LinReg</th>
-      <th>HGB</th>
-      <th>XGB</th>
-      <th>KNN</th>
-      <th>BayesRidge</th>
-      <th>ExtraTrees</th>
-      <th>Poisson</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>250000</td>
-      <td>0.812665</td>
-      <td>15</td>
-      <td>-1.239120</td>
-      <td>-0.893251</td>
-      <td>295.5770</td>
-      <td>15.87120</td>
-      <td>23.04360</td>
-      <td>0.942256</td>
-      <td>29.898000</td>
-      <td>...</td>
-      <td>0.529470</td>
-      <td>1.386950</td>
-      <td>8.78767</td>
-      <td>7.343226</td>
-      <td>7.331423</td>
-      <td>8.640315</td>
-      <td>7.400000</td>
-      <td>7.615950</td>
-      <td>6.788108</td>
-      <td>7.266907</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>250001</td>
-      <td>0.190344</td>
-      <td>131</td>
-      <td>-0.501361</td>
-      <td>0.801921</td>
-      <td>64.8866</td>
-      <td>3.09703</td>
-      <td>344.80500</td>
-      <td>0.807194</td>
-      <td>38.421900</td>
-      <td>...</td>
-      <td>0.248534</td>
-      <td>0.863881</td>
-      <td>11.79390</td>
-      <td>5.375200</td>
-      <td>5.358044</td>
-      <td>4.368844</td>
-      <td>5.953333</td>
-      <td>5.722785</td>
-      <td>6.771823</td>
-      <td>5.630415</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>250002</td>
-      <td>0.919671</td>
-      <td>19</td>
-      <td>-0.057382</td>
-      <td>0.901419</td>
-      <td>11961.2000</td>
-      <td>16.39650</td>
-      <td>273.24000</td>
-      <td>-0.003300</td>
-      <td>37.940000</td>
-      <td>...</td>
-      <td>0.931796</td>
-      <td>2.336870</td>
-      <td>9.05400</td>
-      <td>7.651432</td>
-      <td>7.155378</td>
-      <td>8.072124</td>
-      <td>6.640000</td>
-      <td>7.687740</td>
-      <td>6.748988</td>
-      <td>7.523666</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>250003</td>
-      <td>0.860985</td>
-      <td>19</td>
-      <td>-0.549509</td>
-      <td>0.471799</td>
-      <td>7501.6000</td>
-      <td>2.80698</td>
-      <td>71.08170</td>
-      <td>0.792136</td>
-      <td>0.395235</td>
-      <td>...</td>
-      <td>0.893348</td>
-      <td>1.359470</td>
-      <td>4.84833</td>
-      <td>6.658859</td>
-      <td>6.990297</td>
-      <td>8.061613</td>
-      <td>6.966667</td>
-      <td>6.741872</td>
-      <td>6.839064</td>
-      <td>6.651315</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>250004</td>
-      <td>0.313229</td>
-      <td>89</td>
-      <td>0.588509</td>
-      <td>0.167705</td>
-      <td>2931.2600</td>
-      <td>4.34986</td>
-      <td>1.57187</td>
-      <td>1.118300</td>
-      <td>7.754630</td>
-      <td>...</td>
-      <td>0.361923</td>
-      <td>1.532800</td>
-      <td>3.70660</td>
-      <td>7.381332</td>
-      <td>7.556916</td>
-      <td>5.927926</td>
-      <td>6.600000</td>
-      <td>7.335884</td>
-      <td>6.907310</td>
-      <td>7.300812</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>149995</th>
-      <td>399995</td>
-      <td>0.751053</td>
-      <td>77</td>
-      <td>0.666725</td>
-      <td>-1.106280</td>
-      <td>21433.3000</td>
-      <td>16.58120</td>
-      <td>122.77900</td>
-      <td>-0.319314</td>
-      <td>-82.222900</td>
-      <td>...</td>
-      <td>0.358354</td>
-      <td>1.434990</td>
-      <td>8.55460</td>
-      <td>8.168966</td>
-      <td>7.077535</td>
-      <td>7.679956</td>
-      <td>6.356667</td>
-      <td>7.823884</td>
-      <td>6.763429</td>
-      <td>8.060946</td>
-    </tr>
-    <tr>
-      <th>149996</th>
-      <td>399996</td>
-      <td>0.734669</td>
-      <td>41</td>
-      <td>0.611225</td>
-      <td>0.740177</td>
-      <td>294.1850</td>
-      <td>10.72900</td>
-      <td>25.03340</td>
-      <td>0.644556</td>
-      <td>-13.998000</td>
-      <td>...</td>
-      <td>0.563482</td>
-      <td>1.872810</td>
-      <td>12.54960</td>
-      <td>7.207872</td>
-      <td>7.605457</td>
-      <td>7.049173</td>
-      <td>6.220000</td>
-      <td>7.080088</td>
-      <td>6.829233</td>
-      <td>7.141081</td>
-    </tr>
-    <tr>
-      <th>149997</th>
-      <td>399997</td>
-      <td>0.417307</td>
-      <td>142</td>
-      <td>-0.357854</td>
-      <td>-0.836640</td>
-      <td>1215.2500</td>
-      <td>10.62460</td>
-      <td>221.60400</td>
-      <td>0.875104</td>
-      <td>-41.531500</td>
-      <td>...</td>
-      <td>0.288236</td>
-      <td>2.323660</td>
-      <td>12.33840</td>
-      <td>6.556143</td>
-      <td>6.362928</td>
-      <td>5.452641</td>
-      <td>7.306667</td>
-      <td>6.253849</td>
-      <td>6.778659</td>
-      <td>6.561599</td>
-    </tr>
-    <tr>
-      <th>149998</th>
-      <td>399998</td>
-      <td>1.023900</td>
-      <td>17</td>
-      <td>0.367100</td>
-      <td>-0.936674</td>
-      <td>1832.3900</td>
-      <td>8.51691</td>
-      <td>262.79700</td>
-      <td>-0.474002</td>
-      <td>7.162060</td>
-      <td>...</td>
-      <td>0.453850</td>
-      <td>1.653140</td>
-      <td>31.16380</td>
-      <td>6.339112</td>
-      <td>6.429456</td>
-      <td>4.438631</td>
-      <td>6.296667</td>
-      <td>6.478291</td>
-      <td>6.820186</td>
-      <td>6.392622</td>
-    </tr>
-    <tr>
-      <th>149999</th>
-      <td>399999</td>
-      <td>0.249362</td>
-      <td>49</td>
-      <td>0.344670</td>
-      <td>-0.566363</td>
-      <td>2290.9300</td>
-      <td>20.80300</td>
-      <td>350.64400</td>
-      <td>1.018560</td>
-      <td>9.507420</td>
-      <td>...</td>
-      <td>0.387568</td>
-      <td>1.561280</td>
-      <td>5.69671</td>
-      <td>6.615666</td>
-      <td>7.123491</td>
-      <td>6.916398</td>
-      <td>5.923333</td>
-      <td>6.834000</td>
-      <td>6.834223</td>
-      <td>6.611715</td>
-    </tr>
-  </tbody>
-</table>
-<p>150000 rows × 108 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1691,40 +1352,6 @@ Total rmse: 7.89912
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">submission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/sample_submission.csv'</span><span class="p">)</span>
-<span class="n">submission</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'submission_ALL.csv'</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'CV: ALL equaly weighted:'</span><span class="p">,</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">train</span><span class="p">[[</span><span class="n">m_name</span> <span class="o">+</span> <span class="s1">'_oof'</span> <span class="k">for</span> <span class="n">m_name</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">keys</span><span class="p">()]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
-
-<span class="n">submission</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="o">=</span><span class="n">test</span><span class="p">[[</span><span class="s1">'XGB'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'submission_xgb.csv'</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'CV: XGB only:'</span><span class="p">,</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">train</span><span class="p">[[</span><span class="s1">'XGB_oof'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
-
-<span class="n">submission</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="o">=</span><span class="n">test</span><span class="p">[[</span><span class="s1">'HGB'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'submission_hgb.csv'</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'CV: HGB only:'</span><span class="p">,</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">train</span><span class="p">[[</span><span class="s1">'HGB_oof'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
-
-<span class="n">submission</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="o">=</span><span class="n">test</span><span class="p">[[</span><span class="s1">'LinReg'</span><span class="p">,</span> <span class="s1">'XGB'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'submission_xgb_lin.csv'</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'CV: XGB and LinReg (50:50):'</span><span class="p">,</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">train</span><span class="p">[[</span><span class="s1">'LinReg_oof'</span><span class="p">,</span> <span class="s1">'XGB_oof'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
-
-<span class="n">submission</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="o">=</span><span class="n">test</span><span class="p">[[</span><span class="s1">'KNN'</span><span class="p">,</span> <span class="s1">'XGB'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'submission_xgb_knn.csv'</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'CV: XGB and KNN (50:50):'</span><span class="p">,</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">train</span><span class="p">[[</span><span class="s1">'KNN_oof'</span><span class="p">,</span> <span class="s1">'XGB_oof'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -2031,6 +1658,8 @@ CV: XGB and KNN (50:50): 7.903510468627277
 </h1>
 <ul>
 <li>Modern Portfolio Theory: <a href="https://en.wikipedia.org/wiki/Modern_portfolio_theory">https://en.wikipedia.org/wiki/Modern_portfolio_theory</a>
+</li>
+<li>TPS August 2021 Competition: <a href="https://www.kaggle.com/c/tabular-playground-series-aug-2021/overview">https://www.kaggle.com/c/tabular-playground-series-aug-2021/overview</a>
 </li>
 </ul>
 
