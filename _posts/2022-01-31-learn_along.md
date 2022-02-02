@@ -21,7 +21,7 @@ I often enjoy the *Playground competitions* to focus on a few skills to improve.
 
 In January 2022 there is a [community competition](https://www.kaggle.com/c/song-popularity-prediction) hosted by *Abhishek Thakur*, that provides the opportunity for yet *another learning approach*. During the competition there are sessions being recoreded on YouTube, with two Grandmasters covering the topics *EDA* and *Imputation*. So we get high quality guidance for two important topics while working on the competition. I took the opportunity to learn along. 
 
-I wrote down my experience with this learning approach and shared it with my solution in the following notbook.
+I wrote down my experience with this learning approach and shared it with my solution in the following notebook.
 
-<iframe src="https://www.kaggle.com/embed/joatom/song-pop-learn-along?kernelSessionId=86412582" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Learning along"></iframe>
+<iframe src="https://www.kaggle.com/embed/joatom/song-pop-learn-along?kernelSessionId=86784482" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Learning along"></iframe>
 
