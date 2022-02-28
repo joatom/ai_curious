@@ -8,7 +8,7 @@ image: images/relationship.png
 title: Flat to hierarchie
 ---
 
-![]({{ site.baseurl }}/images/learn_along.png)
+![]({{ site.baseurl }}/images/relationship.png)
 
 Tabular data is often transformed in a flattened manner so it can easily processed by commen ML frameworks. Sometimes it is usefull to understand the relationships and hierarchie between different columns. In this notebook hierarchies are extracted from a flattened csv file.
 
