@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Flat to hierarchie",
-            "content": ". Tabular data is often transformed in a flattened manner so it can easily processed by commen ML frameworks. Sometimes it is usefull to understand the relationships and hierarchie between different columns. In this notebook hierarchies are extracted from a flattened csv file. .",
+            "content": ". Tabular data is often transformed in a flattened manner so it can easily be processed by commen ML frameworks. Sometimes it is usefull to understand the relationships and hierarchies between the columns of a flattend datasource. In this notebook hierarchies are extracted from a flattened csv file. .",
             "url": "https://joatom.github.io/ai_curious/tabular/eda/2022/02/28/relationship.html",
             "relUrl": "/tabular/eda/2022/02/28/relationship.html",
             "date": " • Feb 28, 2022"
