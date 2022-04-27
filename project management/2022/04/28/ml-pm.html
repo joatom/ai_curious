@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tackling Projects like a ML-Challange | AI curious</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Tackling Projects like a ML-Challange" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Analogies of ML-tasks and a small project" />
+<meta property="og:description" content="Analogies of ML-tasks and a small project" />
+<link rel="canonical" href="https://joatom.github.io/ai_curious/project%20management/2022/04/28/ml-pm.html" />
+<meta property="og:url" content="https://joatom.github.io/ai_curious/project%20management/2022/04/28/ml-pm.html" />
+<meta property="og:site_name" content="AI curious" />
+<meta property="og:image" content="https://joatom.github.io/ai_curious/images/ml_pm.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-28T00:00:00-05:00" />
+<script type="application/ld+json">
+{"dateModified":"2022-04-28T00:00:00-05:00","datePublished":"2022-04-28T00:00:00-05:00","url":"https://joatom.github.io/ai_curious/project%20management/2022/04/28/ml-pm.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/project%20management/2022/04/28/ml-pm.html"},"headline":"Tackling Projects like a ML-Challange","image":"https://joatom.github.io/ai_curious/images/ml_pm.png","description":"Analogies of ML-tasks and a small project","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/ai_curious/">AI curious</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/ai_curious/about/">About Me</a><a class="page-link" href="/ai_curious/search/">Search</a><a class="page-link" href="/ai_curious/categories/">Tags</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Tackling Projects like a ML-Challange</h1>
+<p class="page-description">Analogies of ML-tasks and a small project</p>
+<p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-04-28T00:00:00-05:00" itemprop="datePublished">
+        Apr 28, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i> 
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#Project%20Management">Project Management</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="/ai_curious/images/ml_pm.png" alt=""></p>
+
+<h1 id="welcome-to-the-party">Welcome to the party</h1>
+<p align="center"><img class="emoji" title=":cocktail:" alt=":cocktail:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f378.png" height="20" width="20"></p>
+<p>I’ve lately volunteered for a small side project. The task was to build a curriculum for a technical topic. I was joined by a few people who shared similar interest in the technical topic. The team members were located in different countries around the world and we only recently got to know each other.</p>
+
+<h1 id="no-time-to-waste">No time to waste</h1>
+<p align="center"><img class="emoji" title=":running:" alt=":running:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c3.png" height="20" width="20"></p>
+<p>Since everybody was busy with their regular jobs we quickly wanted to get started and decided to gather learning content (YouTube, Web Pages, Learning Platforms, …) individually. We scheduled our second meeting to share the learning material that everybody had collected in the meantime. We quickly came up with a bunch of great resources. So we spent this second session to randomly present the resources to each other. 
+At the end of the meeting I was puzzled. I had seen so many resources that where totally different than the ones I came up with. And I couldn’t imagine on how to put them together to a curriculum. 
+Without any structure the great resources were kind of useless. Moreover, our newly formed team was also lacking of structure, which made it even harder to solve our task in a short time.</p>
+
+<p>After the first two sessions it was obvious. We had to treat our task like a small <em>project</em>!</p>
+
+<h1 id="pitfalls-when-you-rush">Pitfalls when you rush</h1>
+<p align="center"><img class="emoji" title=":construction:" alt=":construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6a7.png" height="20" width="20"></p>
+<p>At this early stage it was still easy to readjust and start over again. But before we checkout the changes we made, let’s take a look what went went wrong so-fare.</p>
+
+<h2 id="who-are-we">Who are we?</h2>
+
+<p>The <em>dynamics of a team</em> can be described in Tuckman’s [BT65] four stages,</p>
+<ul>
+  <li>
+<strong>forming</strong>, where group members try <em>“to identify the boundaries of both interpersonal and task behaviors”</em>,</li>
+  <li>
+<strong>storming</strong>, where interpersonal conflicts arise, hence everyone searches for her/his role in the team,</li>
+  <li>
+<strong>norming</strong>, where everyone settles for her/his role in the team and new group <em>”standards evolve”</em>,</li>
+  <li>
+<strong>performing</strong>, where finally <em>”the group energy is channeled into the task”</em> and the group works efficiently.</li>
+</ul>
+
+<p>Because everyone in our team was short in time we tried to skip the <em>Storming</em> and <em>Norming</em> stage and go straight to <em>Performing</em>. But Tuckman’s stages seem the work like physical laws, a group can’t circumvent certain stages. Even if formal hierarchies already exist, humans need to build trust first and find their role in the team. This is only possible through human interaction, which takes time. Though, the <em>Storming</em> and <em>Norming</em> phase can be very short if you take on a very standardized role to execute very standardized work. Which wasn’t the case in our small creative (non standardized) project.</p>
+
+<h2 id="who-is-it-for">Who is it for?</h2>
+<p>We all had a common sense of the technical topic we were supposed to cover. But the field of the technical topic is huge, with all levels of difficulties. At this point there also was only a <em>vague definition</em> of the audience of the curriculum.</p>
+
+<h2 id="how-are-we-gonna-make-it">How are we gonna make it?</h2>
+<p>We also didn’t talk in advance what steps we would take to reach our goal. Hence, we didn’t set a framework.</p>
+
+<blockquote>
+  <p>The overall situation could basically be defined as <em>A bunch of ambitious strangers from different cultural background were short in time and wanted to solve a vaguely defined task without a framework.</em></p>
+</blockquote>
+
+<h1 id="its-time-for-a-reset">It’s time for a reset</h1>
+<p align="center"><img class="emoji" title=":previous_track_button:" alt=":previous_track_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/23ee.png" height="20" width="20"></p>
+<p>After we identified the obvious obstacles, we thought on how to readjust our way of working.</p>
+
+<h2 id="obstacle-1-being-short-on-time">Obstacle 1: <em>being short on time</em>
+</h2>
+<p>The obvious adjustment would have been to take more time for the task at hand. Unfortunately this was not the preferred option in this case, because we volunteered for a side project that shouldn’t badly effect the regular work we had to do. But we could save some time by avoiding ineffective meetings, hence being well prepared when attending a meeting.</p>
+<h2 id="obstacle-2-working-with-strangers">Obstacle 2: <em>working with strangers</em>
+</h2>
+<p>The time restriction was hard, so we sacrificed team building. That’s always a huge risk and relies on the hope that everyone acts professionally and has the same intrinsic motivation. Luckily, it worked out well.</p>
+<h2 id="obstacle-3-vague-goals">Obstacle 3: <em>vague goals</em>
+</h2>
+<p>We had to define the goals more precisely.</p>
+<h2 id="obstacle-4-missing-framework">Obstacle 4: <em>missing framework</em>
+</h2>
+<p>We had to define a structure on how to approach the task. Given the time limit and the interpersonal constraints this was the part with the highest chance to make a positive impact on the outcome of our project. And that’s what the rest of this blog will focus on.</p>
+
+<h1 id="give-it-all-some-structure">Give it all some structure</h1>
+<p align="center">:compass:</p>
+<p>There are certainly many ways to give a project some structure. But since we were gathering material for a technical topic I found it amusing to tackle the project like a small Machine Learning (ML) project.</p>
+
+<p>A ML project can, for instance, be defined in these steps:</p>
+
+<ol>
+  <li>Define the overall goal (vision) <img class="emoji" title=":framed_picture:" alt=":framed_picture:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f5bc.png" height="20" width="20">
+</li>
+  <li>Re/define the objectives <img class="emoji" title=":paintbrush:" alt=":paintbrush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f58c.png" height="20" width="20">
+</li>
+  <li>Look at the data <img class="emoji" title=":mag_right:" alt=":mag_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png" height="20" width="20">
+</li>
+  <li>Define metrics :abacus:</li>
+  <li>Define test strategy <img class="emoji" title=":clipboard:" alt=":clipboard:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cb.png" height="20" width="20">
+</li>
+  <li>Define architecture <img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20">
+</li>
+  <li>Prepare data :broom:</li>
+  <li>Execute :weight_lifting:</li>
+  <li>Evaluate <img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20">
+</li>
+  <li>Iterate over steps 1 to 8 <img class="emoji" title=":repeat:" alt=":repeat:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f501.png" height="20" width="20">
+</li>
+</ol>
+
+<p>Let’s briefly look what these steps could mean for a <strong>ML project</strong>. And what the outcomes of each step are. 
+Say a cook we wants to build a classifier for flower pictures to identify herbs.</p>
+
+<h2 id="0-state-your-overall-goal-framed_picture">0. State your overall goal <img class="emoji" title=":framed_picture:" alt=":framed_picture:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f5bc.png" height="20" width="20">
+</h2>
+<p>Write the foremost goal down in huge letters and pin it on the wall. <em>A classifier to predict flowers.</em> Every decision you make from now on must follow this goal. If you lose yourself in details during the process you can always refocus by looking at the wall reading the huge letters stating your overall  goal.</p>
+<h2 id="1-redefine-the-objectives-paintbrush">1. Re/define the objectives <img class="emoji" title=":paintbrush:" alt=":paintbrush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f58c.png" height="20" width="20">
+</h2>
+<p>Figure out what is important and what not. Define the objectives precisely (e.g. through User Stories). <em>”As a cook I want the classifier to recognize all herbs in my garden, so that I don’t use the poisoning ones in my meals.”</em></p>
+<h2 id="2-look-at-the-data-mag_right">2. Look at the data <img class="emoji" title=":mag_right:" alt=":mag_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png" height="20" width="20">
+</h2>
+<p>Check the quality and structure of the data. Do exploratory data analysis (EDA). <em>”Some of the pictures of the flowers and herbs are zoomed in, some are in panorama view and show many flowers. Classes are balanced.”</em></p>
+<h2 id="3-define-metrics-abacus">3. Define metrics :abacus:</h2>
+<p>Decide what your algorithm should optimize for. <em>The cook will zoom in closely the take the picture. And since the training targets are well balanced, we choose Accuracy as metric.</em></p>
+<h2 id="4-define-test-strategy-clipboard">4. Define test strategy <img class="emoji" title=":clipboard:" alt=":clipboard:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cb.png" height="20" width="20">
+</h2>
+<p>With the knowledge from EDA we decide on a test strategy and identify what is missing to implement the test strategy. “<em>A stratified-KFold-split makes sense, but the labels still need some cleanup.</em>”</p>
+<h2 id="5-define-architecture-building_construction">5. Define architecture <img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20">
+</h2>
+<p>We always want to start with a simple baseline in the first iteration. Later-on the architecture can get more complex, e.g. through ensembling. <em>Let’s start with a Resnet18.</em></p>
+<h2 id="6-prepare-data-broom">6. Prepare data :broom:</h2>
+<p>Clean and enrich the data. <em>There is enough data. Remove the panorama shots. Clean the labels. Define the train/test/validation data sets.</em></p>
+<h2 id="7-execute-weight_lifting">7. Execute :weight_lifting:</h2>
+<p>Build a model and train.</p>
+<h2 id="8-evaluate-bar_chart">8. Evaluate <img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20">
+</h2>
+<p>Evaluate the model against the metrics. <em>Accuracy is only 80%. Let’s look at the most miss classified data and try to change the architecture in the next iteration.</em></p>
+
+<p>I follow this procedure when I’m participating in Kaggle competition almost every time and I’m sure others follow similar approaches. Depending on how well prepared the data already is, some steps may be executed in slightly different order, e.g. architecture choice can also happen after data preparation. But for sure you want to have a clear picture from the very beginning for what to optimize for and how you evaluate it.</p>
+
+<h1 id="transfer-learning-to-project-management">Transfer Learning to Project Management</h1>
+<p>How can the structure of a ML-Project now be applied to my small side project - building a curriculum for a technical topic - ?</p>
+
+<h2 id="0-define-the-overall-goal-framed_picture">0. Define the overall goal <img class="emoji" title=":framed_picture:" alt=":framed_picture:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f5bc.png" height="20" width="20">
+</h2>
+<p>We want to collect learning material so that people with different skill-sets and backgrounds can learn about the technical topic to use on in their jobs.</p>
+
+<h2 id="1-redefine-the-objectives-paintbrush-1">1. Re/define the objectives <img class="emoji" title=":paintbrush:" alt=":paintbrush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f58c.png" height="20" width="20">
+</h2>
+<p>The audience consists of highly educated professionals, that need the technical knowledge for different reasons. Some need a deep technical understanding to use it as a Software Developer, some need a broad overview for their role as Project Manager and some just want to learn about the topic out of curiosity.
+Because of the heterogeneity of the audience I found it suitable to define different <strong>Personas</strong>. E.g. <em>Andrea, Project Manager, doesn’t like to be fooled by the nerds during the meetings when they talk in their jargon.</em> or <em>Peter, Java evangelist, curious about that hot topic everybody is talking about. “Can’t be that hard, to just learn another language.”</em>. 
+With the personas in place we created categories where we could instantly assign the resources we already had collected. The human characteristics of the personas also lead to an imagination where the collected resources eventually fit to the the stories of the Personas we had in our minds.</p>
+
+<p>In a later iteration we refined the objectives and added two other kind of categories. The one kind of category was concerning the knowledge depth (<em>beginner</em>, <em>intermediate</em> and <em>advanced</em>). The other kind of category distinguished between a business role and a tech role.</p>
+
+<h2 id="2-look-at-the-data-mag_right-1">2. Look at the data <img class="emoji" title=":mag_right:" alt=":mag_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png" height="20" width="20">
+</h2>
+<p>Since we were limited on time we couldn’t do a deep analysis of every resource. If resources where known in advance by one of the team members we had to rely on her/his judgment. If resources were unknown we briefly scanned them or relied on public recommendations. It’s fare from optimal, but it must have been sufficient for a first iteration.</p>
+
+<h2 id="3-define-metrics-abacus-1">3. Define Metrics :abacus:</h2>
+<p>We defined soft metrics implicitly.</p>
+<ul>
+  <li>Do resources fit a Persona?</li>
+  <li>Are the curriculum suitable for a certain category (e.g. <em>beginner</em>)?</li>
+  <li>Are the resources accessible?</li>
+  <li>Are the resources of high quality?</li>
+  <li>Is a resource complementing other resources or can it replace other resources in the curriculum?</li>
+</ul>
+
+<h2 id="4-define-test-strategy-clipboard-1">4. Define Test strategy <img class="emoji" title=":clipboard:" alt=":clipboard:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cb.png" height="20" width="20">
+</h2>
+<p>We had chosen <em>feedback</em> as our test strategy. Feedback was gatherd from outsiders that were not involved in the creation process.</p>
+
+<h2 id="5-define-architecture-building_construction-1">5. Define architecture <img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20">
+</h2>
+<p>The resources  were collected in a wiki style manner that was easily accessible. The curriculum and its resources were structured by the categories defined in step 1.</p>
+
+<h2 id="6-prepare-data-broom-1">6. Prepare data :broom:</h2>
+<p>Collect the resources. Scan the resources. Save references. Check accessibility.</p>
+
+<h2 id="7-execute-weight_lifting-1">7. Execute :weight_lifting:</h2>
+
+<p>Build a baseline model by choosing the relevant resources, sort them by category and write them down in the wiki. Make the page look nice and welcoming.</p>
+
+<p>## 8. Evaluate <img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20">
+Get feedback from stakeholders that are not part of the creation process.</p>
+
+<p>## 9. Iterate <img class="emoji" title=":repeat:" alt=":repeat:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f501.png" height="20" width="20">
+After a few iterations we had a nice curriculum. Additionally we encourage the audience to extend the wiki page.</p>
+
+<h1 id="we-made-it">We made it!</h1>
+<p align="center"><img class="emoji" title=":champagne:" alt=":champagne:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f37e.png" height="20" width="20"></p>
+<p>Given the restriction on time and team building our small project worked out pretty well.</p>
+
+<p>And it was easy to transform our project management issue into a ML-task-like structure. Of course the analogy is a bit artificial. But keep in mind that <em>common sense</em> is the most important skill for project management. If you are a good ML practitioner, you can transform your knowledge into some project management skills. If you can do the one thing properly you can approach other issues properly as well.</p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li>[BT65] Tuckman, Bruce W. „Developmental Sequence in Small Groups.“ Psychological Bulletin 63, Nr. 6 (1965): 384–99. https://doi.org/10.1037/h0022100.</li>
+</ul>
+
+  </div>
+<!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js" repo="joatom/ai_curious" issue-term="title" label="blogpost-comment" theme="github-light" crossorigin="anonymous" async>
+</script><a class="u-url" href="/ai_curious/project%20management/2022/04/28/ml-pm.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ai_curious/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ai_curious/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ai_curious/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Personal blog</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+<li><a rel="me" href="https://github.com/joatom" target="_blank" title="joatom"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#github"></use></svg></a></li>
+<li><a rel="me" href="https://twitter.com/johannestomason" target="_blank" title="johannestomason"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
