@@ -88,7 +88,7 @@ For me as an amateur the fulfillment lays rather in the relaxing hours, escaping
 - Homepage Maximilian Tomasoni: http://www.maximilian-tomasoni.com/
 - Homepage Monastery of Bentlage: https://www.kloster-bentlage.de/en/kunst-kultur-en/bentlage-print-society
 - Edge-detecting algo for workshop in 2016: https://github.com/joatom/ART-playing-with-rob
-- How Art Meets Artificial Intelligence | YQP and Roman Lipski | TEDxMünster, 2016. https://www.youtube.com/watch?v=oVE5rRJa0D8.
+- How Art Meets Artificial Intelligence, YQP and Roman Lipski, TEDxMünster, 2016. https://www.youtube.com/watch?v=oVE5rRJa0D8.
 - “Inceptionism: Going Deeper into Neural Networks.” Accessed August 29, 2022. http://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html.
 - Gatys, Leon A., Alexander S. Ecker, and Matthias Bethge. “A Neural Algorithm of Artistic Style.” arXiv, September 2, 2015. https://doi.org/10.48550/arXiv.1508.06576.
 - Ho, Jonathan, Ajay Jain, and Pieter Abbeel. “Denoising Diffusion Probabilistic Models.” arXiv, December 16, 2020. https://doi.org/10.48550/arXiv.2006.11239.
