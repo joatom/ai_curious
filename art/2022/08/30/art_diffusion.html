@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Art and Diffusion | AI curious</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Art and Diffusion" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Thoughts about the future of art with respect to ML/AI." />
+<meta property="og:description" content="Thoughts about the future of art with respect to ML/AI." />
+<link rel="canonical" href="https://joatom.github.io/ai_curious/art/2022/08/30/art_diffusion.html" />
+<meta property="og:url" content="https://joatom.github.io/ai_curious/art/2022/08/30/art_diffusion.html" />
+<meta property="og:site_name" content="AI curious" />
+<meta property="og:image" content="https://joatom.github.io/ai_curious/images/Diffusion_Bentlage_r_bl.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-30T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://joatom.github.io/ai_curious/art/2022/08/30/art_diffusion.html","headline":"Art and Diffusion","datePublished":"2022-08-30T00:00:00-05:00","dateModified":"2022-08-30T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://joatom.github.io/ai_curious/art/2022/08/30/art_diffusion.html"},"image":"https://joatom.github.io/ai_curious/images/Diffusion_Bentlage_r_bl.png","description":"Thoughts about the future of art with respect to ML/AI.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ai_curious/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://joatom.github.io/ai_curious/feed.xml" title="AI curious" /><link rel="shortcut icon" type="image/x-icon" href="/ai_curious/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ai_curious/">AI curious</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ai_curious/about/">About Me</a><a class="page-link" href="/ai_curious/search/">Search</a><a class="page-link" href="/ai_curious/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Art and Diffusion</h1><p class="page-description">Thoughts about the future of art with respect to ML/AI.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-30T00:00:00-05:00" itemprop="datePublished">
+        Aug 30, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/ai_curious/categories/#Art">Art</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="human-machine-interaction">Human-machine interaction</h1>
+
+<p>In summer 2016 I spent a day with <a href="http://www.maximilian-tomasoni.com/">my brother</a> at his studio in the <a href="https://www.kloster-bentlage.de/en/kunst-kultur-en/bentlage-print-society">Monastery of Bentlage</a> to try out fine art printing. The monastery is in the countryside and is a very calming place to escape from everyday life.
+As preparation for the workshop my brother asked me to prepare a drawing. I’m not a good drawer, my hands are shaky and whatever comes out of the pencil never looks like what I intended to draw. Luckily I was experimenting with edge-detecting algorithms at that time. The algorithm I was implementing was suitable to create an image that looked like a drawing. I took a picture of my son where he was playing with the vacuum robot and run my program to extract the contours of my son and the vacuum robot. The setting where I generate a drawing with an algorithm and the theme of my son playing with a robot was very appealing.
+In the workshop we used the generated drawing as template for my artwork. The printing technique we applied to create the artwork is called etching. The classical look and feel of this centuries old technique was a nice contrast to the rather modern theme - a kid playing with a smart robot. Yet, it made the interaction between humans and robots look pretty normal. And I was proud of my amateurish accomplishments.</p>
+
+<p align="center">
+	&lt;img width=50% src="/ai_curious/images/art_diffusion/Druck_rob2.jpg"/&gt;
+</p>
+
+<p>A few weeks later I was attending a TEDx event in Münster. One of the <a href="https://www.youtube.com/watch?v=oVE5rRJa0D8">talks</a> was given by the artist <a href="https://www.romanlipski.com/">Roman Lipski</a> and the art collective <a href="http://www.yqp.computer/">YQP</a>. Surprisingly, they introduced their concept of art where the artist interacts with an Artificial Muse. The Muse (an ML algorithm) learned to imitate Lipski’s style of painting by “analysing” his artworks. The painter than used the generated images as inspiration (Muse) to paint new pictures on canvas.
+This was in 2016 shortly after google shared their <a href="http://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html">Deep Dream</a> accomplishments and <a href="http://arxiv.org/abs/1508.06576">Style Transfer</a> was a hot topic in the tech community. Lipski and his team envisioned the natural interaction between AI and humans to create art.
+In 2016 I was not practicing ML yet, nor was I heavily involved into art, apart from seeing my brother from time to time. But after this TEDx talk it was obvious that computer generated images will have a high impact on arts in the future. But will it be interruptive in the sense that artists become obsolete?</p>
+
+<h1 id="what-is-art-or-why-is-art">What is art? Or, why is art?</h1>
+
+<p>There are countless definitions and strong opinions about <em>What is Art?</em> and what not. Let’s ignore this question for now and rather focus on another question.
+<em>Why does Art exists?</em>
+As I said, I’m not an art professional, but a few answers are obvious to me.</p>
+
+<p>Art exists because of,</p>
+<ul>
+  <li>the human nature:
+    <ul>
+      <li>people love to be creative,</li>
+      <li>people love beauty,</li>
+      <li>people use different forms to express feelings,</li>
+      <li>people love stories and imagination</li>
+    </ul>
+  </li>
+  <li>political and sociological activities:
+    <ul>
+      <li>people, who are suppressed, can hide critics in art,</li>
+      <li>people use art to defame opponents,</li>
+      <li>people can visualize opinions
+…</li>
+    </ul>
+  </li>
+</ul>
+
+<p>There certainly are many more categories and reasons why art exists. However, a few things stand out.</p>
+<ul>
+  <li>Art is a highly influential medium to form opinions using the imaginary power of the viewer. To the point where the viewer’s imagination can go way beyond the obvious object. For example, if you look at a picture with a house in a landscape and the rich and shiny oil colors, your imagination can take you from the museum right to Tuscany.</li>
+  <li>People also practice art for their own sake.</li>
+</ul>
+
+<p>So why do we get confused about the question <em>What is art?</em> Some of the techniques that are used in art are also used for other purpose.
+Let’s take drawing as an example. An architect uses drawing technics to plot the layout of a house. The plot may including information about wall measures, connection for water and electricity, etc. Usually you wouldn’t consider that kind of plot as a piece of art, though it still requires a bit of imagination from the viewer. The technical drawing must be easy accessible for the interpreter and thus provides the obvious information (e.g. measures of the wall in centimeters). However, sometimes a technical drawing can diffuses into art. although it still serves the original purpose. A technical drawing can be of such of an elegance that it my raise strong feelings in the viewer - or the drawer. Than it becomes art. Think of Christo’s drawings. Don’t you feel joy or fascination when you are looking at them?</p>
+
+<p>Back to the question, <em>will advancements in AI/ML disrupt and takeover Art?</em> No! Every argument I used to describe the purpose of art involves humans at some point. There is no perception of beauty or expression of feelings without humans nor is there any political or social implications without humans.
+<em>Will AI/ML heavily influence the arts and creativity?</em> Yes! We will gain an impressive tool set and new techniques. And we can see that Computers are already being creative in certain environments (e.g. generative ML-models).</p>
+
+<h1 id="diffusion">Diffusion</h1>
+
+<p>Computers are magical and support you being creative. I remember in the 90’s when we used to create flyers for our parties. The visual effects of the graphic programs were so fascinating that we had to use almost all of them. The flyers always ended up looking like invitations to psychedelic 70’s parties rather then to underground techno parties.
+Some 25 years later the algorithms are getting very sophisticated. Images can be created out of noise or text. Existing images can be transformed to adapt the style of another painter or to look totally different.
+At the time of writing this article <a href="https://arxiv.org/abs/2112.10752">Diffusion Models</a> are trending. Their strength lies in modification of existing images by adding noise to the image and then transforming the image while reducing the added noise again. The models can be combined with text encoders. You can basically tell the algorithm how you want a given image to change and how you want it to look like.</p>
+
+<p>This summer my brother called me because someone dropped out of a workshop he was offering. And if I wanted to join spontaneously. I signed up for the two day offside and because I missed the first day of the workshop I needed to come up with a good template quickly. I decided to use one of the publicly available Diffusion Models to get started. I picked <a href="https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb">Disco Diffusion</a>, where a handy <a href="https://www.youtube.com/watch?v=wIw59kAU6u8">tutorial</a> was available. I added one of my favorite photos of the kids to the model and as text input I asked the model to change the picture into something like “<em>Three children waiting for a bus in a photorealistic cyberpunk town. Red, blue, black, dark cyberpunk scheme.</em>”. I did a bit of parameter tuning and after two hours I had a few templates to work with on the workshop.</p>
+
+<table>
+	<tr>
+		<td><img src="/ai_curious/images/art_diffusion/Foto.png" /></td>
+ 		<td><img src="/ai_curious/images/art_diffusion/Diffusion_merged.png" /></td>
+	</tr>
+	<tr>
+		<td>Original photo (censored)</td>
+		<td>Combination of two generated images</td>
+	</tr>
+</table>
+
+<p>On this workshop we applied screen printing technique and due to time restrictions we were limited to two (color) layers. I used the original photo and the generated images as inspiration for the print. I wouldn’t call it Muse in my case because it used the images as template with a few abstractions. But if I’d be a professional artist I would definitely use the algorithms somehow.</p>
+
+<table>
+	<tr>
+		<td><img src="/ai_curious/images/art_diffusion/ws1.jpg" /></td>
+ 		<td><img src="/ai_curious/images/art_diffusion/ws2.jpg" /></td>
+ 		<td><img src="/ai_curious/images/art_diffusion/ws3.jpg" /></td>
+ 		<td><img src="/ai_curious/images/art_diffusion/ws4.jpg" /></td>
+ 		<td><img src="/ai_curious/images/art_diffusion/ws5.jpg" /></td>
+		<td>&lt;img src="/ai_curious/images/art_diffusion/ws6.jpg"</td>
+	</tr>
+</table>
+
+<p>For me as an amateur the fulfillment lays rather in the relaxing hours, escaping daily routines, interacting with people, while handcrafting some little artwork to use as Christmas card or to hang on my walls at home.</p>
+
+<p><img src="/ai_curious/images/Diffusion_Bentlage_gr_bl.png" alt="" /></p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="joatom/ai_curious"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/ai_curious/art/2022/08/30/art_diffusion.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ai_curious/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ai_curious/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ai_curious/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Personal blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/joatom" target="_blank" title="joatom"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/johannestomason" target="_blank" title="johannestomason"><svg class="svg-icon grey"><use xlink:href="/ai_curious/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
