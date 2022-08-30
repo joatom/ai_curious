@@ -11,7 +11,7 @@ title: Art and Diffusion
 # Human-machine interaction
 
 In summer 2016 I spent a day with [my brother](http://www.maximilian-tomasoni.com/) at his studio in the [Monastery of Bentlage](https://www.kloster-bentlage.de/en/kunst-kultur-en/bentlage-print-society) to try out fine art printing. The monastery is in the countryside and is a very calming place to escape from everyday life.
-As preparation for the workshop my brother asked me to prepare a drawing. I'm not a good drawer, my hands are shaky and whatever comes out of the pencil never looks like what I intended to draw. Luckily I was experimenting with edge-detecting algorithms at that time. The algorithm I was implementing was suitable to create an image that looked like a drawing. I took a picture of my son where he was playing with the vacuum robot and run my program to extract the contours of my son and the vacuum robot. The setting where I generate a drawing with an algorithm and the theme of my son playing with a robot was very appealing.
+As preparation for the workshop my brother asked me to prepare a drawing. I'm not a good drawer, my hands are shaky and whatever comes out of the pencil never looks like what I intended to draw. Luckily I was experimenting with edge-detecting algorithms at that time. [The algorithm](https://github.com/joatom/ART-playing-with-rob) I was implementing was suitable to create an image that looked like a drawing. I took a picture of my son where he was playing with the vacuum robot and run my program to extract the contours of my son and the vacuum robot. The setting where I generate a drawing with an algorithm and the theme of my son playing with a robot was very appealing.
 In the workshop we used the generated drawing as template for my artwork. The printing technique we applied to create the artwork is called etching. The classical look and feel of this centuries old technique was a nice contrast to the rather modern theme - a kid playing with a smart robot. Yet, it made the interaction between humans and robots look pretty normal. And I was proud of my amateurish accomplishments.
 
 ![]({{ site.baseurl }}/images/art_diffusion/Druck_rob2.jpg)
@@ -83,3 +83,16 @@ On this workshop we applied screen printing technique and due to time restrictio
 For me as an amateur the fulfillment lays rather in the relaxing hours, escaping daily routines, interacting with people, while handcrafting some little artwork to use as Christmas card or to hang on my walls at home.
 
 ![]({{ site.baseurl }}/images/art_diffusion/Diffusion_Bentlage_gr_bl.png)
+
+# Resources
+- Homepage Maximilian Tomasoni: http://www.maximilian-tomasoni.com/
+- Homepage Monastery of Bentlage: https://www.kloster-bentlage.de/en/kunst-kultur-en/bentlage-print-society
+- Edge-detecting algo for workshop in 2016: https://github.com/joatom/ART-playing-with-rob
+- How Art Meets Artificial Intelligence | YQP and Roman Lipski | TEDxMünster, 2016. https://www.youtube.com/watch?v=oVE5rRJa0D8.
+- “Inceptionism: Going Deeper into Neural Networks.” Accessed August 29, 2022. http://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html.
+- Gatys, Leon A., Alexander S. Ecker, and Matthias Bethge. “A Neural Algorithm of Artistic Style.” arXiv, September 2, 2015. https://doi.org/10.48550/arXiv.1508.06576.
+- Ho, Jonathan, Ajay Jain, and Pieter Abbeel. “Denoising Diffusion Probabilistic Models.” arXiv, December 16, 2020. https://doi.org/10.48550/arXiv.2006.11239.
+- Rombach, Robin, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. “High-Resolution Image Synthesis with Latent Diffusion Models.” arXiv, April 13, 2022. https://doi.org/10.48550/arXiv.2112.10752.
+- Quick Start on Using AI to Render Images Using Disco Diffusion, 2022. https://www.youtube.com/watch?v=wIw59kAU6u8.
+- https://github.com/alembics/disco-diffusion, and Katherine Crowson. “Disco Diffusion v5.61 - Now with Portrait_generator_v001,” n.d. https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb.
+
